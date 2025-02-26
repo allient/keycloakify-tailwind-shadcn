@@ -36,20 +36,18 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             displayMessage={!messagesPerField.existsError("username", "password")}
             headerNode={msg("loginAccountTitle")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
-            infoNode={
-                <div id="kc-registration" className="">
-                    <span className="text-foreground text-xl">
-                        {msgStr("noAccount")}{" "}
-                        <a tabIndex={8} href={url.registrationUrl} className="mx-5 link-style ">
-                            {msgStr("doRegister")}
-                        </a>
-                    </span>
-                </div>
-            }
             socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} />}
         >
             <div id="kc-form">
                 <div id="kc-form-wrapper">
+                    <div id="kc-registration" className="">
+                        <span className="text-xs md:text-sm text-gray-600 text-center">
+                            {"Need an account?"}{" "}
+                            <a tabIndex={8} href={url.registrationUrl} className="text-blue-600 no-underline hover:underline font-normal">
+                                {"Sign Up"}
+                            </a>
+                        </span>
+                    </div>
                     {realm.password && (
                         <form
                             id="kc-form-login"
@@ -63,17 +61,17 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                         >
                             {!usernameHidden && (
                                 <div>
-                                    <Label htmlFor="username" className="text-lg">
+                                    <Label htmlFor="username" className="text-xs font-light text-gray-700 font-battambang">
                                         {!realm.loginWithEmailAllowed
-                                            ? msg("username")
+                                            ? "Email Address"
                                             : !realm.registrationEmailAsUsername
-                                              ? msg("usernameOrEmail")
-                                              : msg("email")}
+                                                ? "Email Address"
+                                                : "Email Address"}
                                     </Label>
                                     <Input
                                         tabIndex={2}
                                         id="username"
-                                        className=""
+                                        className="font-battambang font-light"
                                         name="username"
                                         defaultValue={login.username ?? ""}
                                         type="text"
@@ -95,14 +93,14 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             )}
 
                             <div>
-                                <Label htmlFor="password" className="text-lg">
+                                <Label htmlFor="password" className="text-xs font-light text-gray-700 font-battambang">
                                     {msg("password")}
                                 </Label>
                                 <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password">
                                     <Input
                                         tabIndex={3}
                                         id="password"
-                                        className="text-foreground"
+                                        className="text-foreground font-battambang"
                                         name="password"
                                         type="password"
                                         autoComplete="current-password"
@@ -121,41 +119,14 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 )}
                             </div>
 
-                            <div className="space-y-2 md:space-y-0 md:flex md:justify-between text-lg ">
-                                <div>
-                                    {realm.rememberMe && !usernameHidden && (
-                                        <div className="flex items-center space-x-2 ">
-                                            <input
-                                                tabIndex={5}
-                                                // id="rememberMe"
-                                                className={clsx(checkboxVariants({}), "")}
-                                                name="rememberMe"
-                                                type="checkbox"
-                                                defaultChecked={!!login.rememberMe}
-                                            />
-                                            <span>{msgStr("rememberMe")}</span>
-                                        </div>
-                                    )}
-                                </div>
-                                <div className=" link-style">
-                                    {realm.resetPasswordAllowed && (
-                                        <span>
-                                            <a tabIndex={6} href={url.loginResetCredentialsUrl}>
-                                                {msgStr("doForgotPassword")}
-                                            </a>
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
 
                             <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
                                 <Input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
 
                                 <Button tabIndex={7} disabled={isLoginButtonDisabled} type="submit" className="w-full ">
-                                    {msgStr("doLogIn")}
+                                    {"Log in →"}
                                 </Button>
                             </div>
-                            <Separator />
                         </form>
                     )}
                 </div>

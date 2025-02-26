@@ -61,7 +61,8 @@ module.exports = {
                 sm: "calc(var(--radius) - 4px)"
             },
             fontFamily: {
-                sans: ["var(--font-sans)", ...fontFamily.sans]
+                battambang: ["var(--font-battambang)", "monospace"],
+                "dm-sans": ["var(--font-dm-sans)", "sans-serif"],
             },
             keyframes: {
                 "accordion-down": {

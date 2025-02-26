@@ -30,7 +30,7 @@ export function PasswordWrapper(props: {
     return (
         <div className="flex space-x-2">
             {children}
-            <Button
+            {/* <Button
                 type="button"
                 aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
                 aria-controls={passwordInputId}
@@ -43,7 +43,7 @@ export function PasswordWrapper(props: {
                         <EyeIcon className="h-5 w-5 " aria-hidden="true" />
                     )}
                 </div>
-            </Button>
+            </Button> */}
         </div>
     );
 }

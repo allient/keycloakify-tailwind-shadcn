@@ -1,9 +1,9 @@
 {
-  "destDirPath": "E:\\playground\\keycloakify-tailwind-shadcn\\public\\keycloak-resources",
+  "destDirPath": "/Users/xavieraguas/Documents/GitHub/01 Allient/keycloakify-tailwind-shadcn/public/keycloak-resources",
   "keycloakifyVersion": "10.0.5",
   "buildContext": {
     "loginThemeResourcesFromKeycloakVersion": "10.0.5",
-    "cacheDirPath": "..\\..\\node_modules\\.cache\\keycloakify",
+    "cacheDirPath": "../../node_modules/.cache/keycloakify",
     "fetchOptions": {
       "strictSSL": false
     }

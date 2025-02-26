@@ -177,16 +177,16 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
             <div id="kc-header-wrapper" className="text-center text-foreground hide md:visible">
                 {msgStr("loginTitleHtml", realm.displayNameHtml)}
             </div>
-            <Card className="py-0 px-3  md:-[40rem] shadow-2xl w-full min-h-screen  md:w-[30rem] sm:min-h-fit ">
+            <Card className="py-0 px-3  md:-[40rem] shadow-2xl w-full min-h-screen  md:w-[30rem] sm:min-h-fit bg-[#FFFFF8]">
                 <CardContent className="space-y-8 pb-5 ">
-                    <div className="flex justify-end space-x-4 pt-2">
+                    {/* <div className="flex justify-end space-x-4 pt-2">
                         {languageSelector()}
                         <ModeToggle />
-                    </div>
-                    <header className="text-center  ">
+                    </div> */}
+                    <header className="text-left ">
                         {(() => {
                             const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
-                                <h1 id="kc-page-title">{headerNode}</h1>
+                                <h2 id="kc-page-title" className="text-lg md:text-xl font-light text-gray-900 font-battambang" >{"Sign in to your account"}</h2>
                             ) : (
                                 <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
                                     <label id="kc-attempted-username">{auth.attemptedUsername}</label>
