@@ -173,7 +173,8 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
         );
     };
     return (
-        <div className="bg-background  min-h-screen   flex flex-col items-center justify-center  prose dark:prose-invert max-w-none">
+        <div className="bg-background  min-h-screen   flex flex-col items-center justify-center  prose dark:prose-invert max-w-none bg-[#eff3fc]">
+            <img src="/logo.png" alt="Logo" className="w-64 h-auto mb-4 mx-auto" />
             <div id="kc-header-wrapper" className="text-center text-foreground hide md:visible">
                 {msgStr("loginTitleHtml", realm.displayNameHtml)}
             </div>
@@ -264,7 +265,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
                     </div>
                     {displayInfo && (
                         <div className=" w-full">
-                            <div className=" text-foreground">{infoNode}</div>
+                            <div className=" text-foreground text-gray-700 text-xs">{infoNode}</div>
                         </div>
                     )}
                 </CardContent>

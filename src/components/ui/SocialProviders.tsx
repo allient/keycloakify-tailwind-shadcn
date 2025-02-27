@@ -34,9 +34,9 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                 {realm.password &&
                     social.providers !== undefined &&
                     social.providers.length !== 0 && (
-                        <div id="kc-social-providers" className="mt-5 space-y-7">
-                            <h2 className="text-center text-lg mt-7">
-                                {msg("identity-provider-login-label")}
+                        <div id="kc-social-providers" className="mt-5 space-y-5">
+                            <h2 className="text-center text-lg mt-7 font-battambang font-light">
+                                {"Or sign in with"}
                             </h2>
                             <div
                                 className={clsx(
@@ -49,24 +49,25 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                                 {social.providers.map((...[p, , providers]) => (
                                     <div
                                         key={p.alias}
-                                        className=" items-center bg-accent  w-full py-1 my-1.5 border rounded-lg px-3 hover:bg-primary hover:text-primary-foreground"
+                                        className="group items-center bg-gray-100 w-full py-1 my-1.5 border rounded-xl px-3 
+               hover:bg-gray-300 transition-colors duration-200"
                                     >
                                         <a
                                             id={`social-${p.alias}`}
-                                            className="flex flex-row items-center justify-center  w-full py-2 "
+                                            className="flex flex-row items-center justify-center w-full py-2 no-underline hover:no-underline"
                                             type="button"
                                             href={p.loginUrl}
                                         >
                                             {p.iconClasses && (
                                                 <i
-                                                    className={clsx(p.iconClasses)}
+                                                    className={clsx(p.iconClasses, "group-hover:text-black transition-colors duration-200")}
                                                     aria-hidden="true"
                                                 ></i>
                                             )}
                                             <span
-                                                className="mx-3"
+                                                className="mx-3 text-gray-900 no-underline group-hover:text-black transition-colors duration-200"
                                                 dangerouslySetInnerHTML={{
-                                                    __html: p.displayName
+                                                    __html: p.displayName.replace(/<a /g, '<a class="no-underline hover:no-underline" ')
                                                 }}
                                             ></span>
                                         </a>

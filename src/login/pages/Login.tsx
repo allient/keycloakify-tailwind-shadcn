@@ -80,14 +80,14 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         aria-invalid={messagesPerField.existsError("username", "password")}
                                     />
                                     {messagesPerField.existsError("username", "password") && (
-                                        <div
+                                        <span
                                             // id="input-error"
-                                            className="input-error py-3"
+                                            className="input-error py-3 text-xs md:text-sm"
                                             aria-live="polite"
                                             dangerouslySetInnerHTML={{
                                                 __html: messagesPerField.getFirstError("username", "password")
                                             }}
-                                        />
+                                        />              
                                     )}
                                 </div>
                             )}

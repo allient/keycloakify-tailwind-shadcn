@@ -31,7 +31,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
             <form id="kc-reset-password-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
                 <div className={kcClsx("kcFormGroupClass")}>
                     <div className={kcClsx("kcLabelWrapperClass")}>
-                        <label htmlFor="username" className={kcClsx("kcLabelClass")}>
+                        <label htmlFor="username" className={"text-xs font-light text-gray-700 font-battambang"}>
                             {!realm.loginWithEmailAllowed
                                 ? msg("username")
                                 : !realm.registrationEmailAsUsername
@@ -44,7 +44,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                             type="text"
                             id="username"
                             name="username"
-                            // className={kcClsx("kcInputClass")}
+                            className="font-battambang font-light"
                             autoFocus
                             defaultValue={auth.attemptedUsername ?? ""}
                             aria-invalid={messagesPerField.existsError("username")}
@@ -52,7 +52,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                         {messagesPerField.existsError("username") && (
                             <span
                                 id="input-error-username"
-                                className={kcClsx("kcInputErrorMessageClass")}
+                                className="input-error py-3 text-xs md:text-sm"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: messagesPerField.get("username")
