@@ -82,7 +82,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     {messagesPerField.existsError("username", "password") && (
                                         <span
                                             // id="input-error"
-                                            className="input-error py-3 text-xs md:text-sm"
+                                            className="input-error py-3 text-[10px] md:text-xs"
                                             aria-live="polite"
                                             dangerouslySetInnerHTML={{
                                                 __html: messagesPerField.getFirstError("username", "password")
@@ -110,7 +110,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 {usernameHidden && messagesPerField.existsError("username", "password") && (
                                     <span
                                         id="input-error"
-                                        className="input-error py-3 text-xs md:text-sm"
+                                        className="input-error py-3 text-[10px] md:text-xs"
                                         aria-live="polite"
                                         dangerouslySetInnerHTML={{
                                             __html: messagesPerField.getFirstError("username", "password")
