@@ -56,10 +56,10 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
     const groupNameRef = { current: "" };
 
     return (
-        <div className="prose dark:prose-invert ">
+        <div className="prose dark:prose-invert grid grid-cols-2 ">
             {formFieldStates.map(({ attribute, displayableErrors, valueOrValues }) => {
                 return (
-                    <div className=" my-5">
+                    <div className=" my-2">
                         <Fragment key={attribute.name}>
                             <GroupLabel attribute={attribute} groupNameRef={groupNameRef} i18n={i18n} kcClsx={kcClsx} />
                             {BeforeField !== undefined && (
@@ -88,7 +88,7 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                                 <div className={kcClsx("kcInputWrapperClass")}>
                                     {attribute.annotations.inputHelperTextBefore !== undefined && (
                                         <div
-                                            className={kcClsx("kcInputHelperTextBeforeClass")}
+                                            className={`${kcClsx("kcInputHelperTextBeforeClass")} text-[10px]`}
                                             id={`form-help-text-before-${attribute.name}`}
                                             aria-live="polite"
                                         >

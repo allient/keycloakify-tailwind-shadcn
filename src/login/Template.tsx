@@ -174,7 +174,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
     };
     return (
         <div className="bg-background  min-h-screen   flex flex-col items-center justify-center  prose dark:prose-invert max-w-none bg-[#eff3fc]">
-            <img src="/logo.png" alt="Logo" className="w-64 h-auto mb-4 mx-auto" />
+            <img src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1740676465/logo-png_vuxitm.png" alt="Logo" className="w-80 h-auto mb-4 mx-auto" />
             <div id="kc-header-wrapper" className="text-center text-foreground hide md:visible">
                 {msgStr("loginTitleHtml", realm.displayNameHtml)}
             </div>

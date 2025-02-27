@@ -35,8 +35,16 @@ export default function Register(props: RegisterProps) {
             classes={classes}
             headerNode={msg("registerTitle")}
             displayMessage={messagesPerField.exists("global")}
-            displayRequiredFields
+            displayRequiredFields={false}
         >
+            <div id="kc-registration" className="">
+                <span className="text-xs md:text-sm text-gray-600 text-center">
+                    {"Already have an account?"}{" "}
+                    <a tabIndex={8} href={url.loginUrl} className="text-blue-600 no-underline hover:underline font-normal">
+                        {"Log In"}
+                    </a>
+                </span>
+            </div>
             <form id="kc-register-form" className="" action={url.registrationAction} method="post">
                 <UserProfileFormFields
                     kcContext={kcContext}
@@ -61,13 +69,19 @@ export default function Register(props: RegisterProps) {
                         </div>
                     </div>
                 )}
-                <div className="  ">
-                    <div className="mx-2 mt-14">
+                <div className="text-center">
+                    <div className="mx-2">
                         <div>
-                            <span>
-                                <a href={url.loginUrl} className={buttonVariants({ variant: "link" })}>
-                                    {msg("backToLogin")}
+                            <span className="text-xs md:text-sm text-gray-600 text-center font-battambang">
+                                {"By signing up. I agree to "}{" "}
+                                <a tabIndex={8} href={url.loginUrl} className="text-blue-600 no-underline hover:underline font-normal">
+                                    {"Terms of Services"}
                                 </a>
+                                {" and "}
+                                <a tabIndex={8} href={url.loginUrl} className="text-blue-600 no-underline hover:underline font-normal">
+                                    {"Privacy Policy"}
+                                </a>
+                                {"."}
                             </span>
                         </div>
                     </div>
@@ -78,7 +92,7 @@ export default function Register(props: RegisterProps) {
                             type="submit"
                             className="w-full "
                             variant={"default"}
-                            //value={msgStr("doRegister")}>
+                        //value={msgStr("doRegister")}>
                         >
                             {msgStr("doRegister")}
                         </Button>
