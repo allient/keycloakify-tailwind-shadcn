@@ -235,7 +235,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
                                         {message.type === "info" && <span className={kcClsx("kcFeedbackInfoIcon")}></span>}
                                     </div>
                                     <span
-                                        className="text-sm"
+                                        className="text-xs"
                                         dangerouslySetInnerHTML={{
                                             __html: message.summary
                                         }}

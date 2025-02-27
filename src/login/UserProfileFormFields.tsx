@@ -80,7 +80,7 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                                 }}
                             >
                                 <div className="mx-6">
-                                    <label htmlFor={attribute.name} className="">
+                                    <label htmlFor={attribute.name} className={"text-xs font-light text-gray-700 font-battambang"}>
                                         {advancedMsg(attribute.displayName ?? "")}
                                     </label>
                                     {attribute.required && <span className="text-danger"> *</span>}
@@ -220,7 +220,7 @@ function FieldErrors(props: { attribute: Attribute; displayableErrors: FormField
         <span
             id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`}
             // className={kcClsx("kcInputErrorMessageClass")}
-            className="text-danger text-md "
+            className="input-error py-3 text-xs md:text-sm"
             aria-live="polite"
         >
             {displayableErrors
@@ -311,7 +311,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
                     return valueOrValues;
                 })()}
-                // className={kcClsx("kcInputClass")}
+                className={"text-foreground font-battambang"}
                 aria-invalid={displayableErrors.find(error => error.fieldIndex === fieldIndex) !== undefined}
                 disabled={attribute.readOnly}
                 autoComplete={attribute.autocomplete}
@@ -560,7 +560,7 @@ function TextareaTag(props: InputFieldByTypeProps) {
         <textarea
             id={attribute.name}
             name={attribute.name}
-            className={kcClsx("kcInputClass")}
+            className={"text-foreground font-battambang"}
             aria-invalid={displayableErrors.length !== 0}
             disabled={attribute.readOnly}
             cols={attribute.annotations.inputTypeCols === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeCols}`)}
@@ -596,7 +596,7 @@ function SelectTag(props: InputFieldByTypeProps) {
         <select
             id={attribute.name}
             name={attribute.name}
-            className={kcClsx("kcInputClass")}
+            className={`${kcClsx("kcInputClass")} text-sm font-battambang`}
             aria-invalid={displayableErrors.length !== 0}
             disabled={attribute.readOnly}
             multiple={isMultiple}

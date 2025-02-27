@@ -63,10 +63,10 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 <div>
                                     <Label htmlFor="username" className="text-xs font-light text-gray-700 font-battambang">
                                         {!realm.loginWithEmailAllowed
-                                            ? "Email Address"
+                                            ? msg("username")
                                             : !realm.registrationEmailAsUsername
-                                                ? "Email Address"
-                                                : "Email Address"}
+                                                ?msg("usernameOrEmail")
+                                                : msg("email")}
                                     </Label>
                                     <Input
                                         tabIndex={2}
@@ -110,7 +110,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 {usernameHidden && messagesPerField.existsError("username", "password") && (
                                     <span
                                         id="input-error"
-                                        className={kcClsx("kcInputErrorMessageClass")}
+                                        className="input-error py-3 text-xs md:text-sm"
                                         aria-live="polite"
                                         dangerouslySetInnerHTML={{
                                             __html: messagesPerField.getFirstError("username", "password")

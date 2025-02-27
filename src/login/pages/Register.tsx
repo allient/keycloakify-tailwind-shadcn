@@ -62,7 +62,7 @@ export default function Register(props: RegisterProps) {
                     </div>
                 )}
                 <div className="  ">
-                    <div className="mx-2">
+                    <div className="mx-2 mt-14">
                         <div>
                             <span>
                                 <a href={url.loginUrl} className={buttonVariants({ variant: "link" })}>

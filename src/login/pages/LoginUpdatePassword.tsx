@@ -33,7 +33,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
             <form id="kc-passwd-update-form" action={url.loginAction} method="post" className="flex flex-col">
                 <div className={kcClsx("kcFormGroupClass")}>
                     <div className={kcClsx("kcLabelWrapperClass")}>
-                        <label htmlFor="password-new" className={kcClsx("kcLabelClass")}>
+                        <label htmlFor="password-new" className={"text-xs font-light text-gray-700 font-battambang"}>
                             {msg("passwordNew")}
                         </label>
                     </div>
@@ -41,6 +41,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                         <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password-new">
                             <Input
                                 type="password"
+                                className="text-foreground font-battambang"
                                 id="password-new"
                                 name="password-new"
                                 autoFocus
@@ -52,7 +53,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                         {messagesPerField.existsError("password") && (
                             <span
                                 id="input-error-password"
-                                className={kcClsx("kcInputErrorMessageClass")}
+                                className="input-error py-3 text-xs md:text-sm"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: messagesPerField.get("password")
@@ -64,7 +65,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
 
                 <div className={kcClsx("kcFormGroupClass")}>
                     <div className={kcClsx("kcLabelWrapperClass")}>
-                        <label htmlFor="password-confirm" className={kcClsx("kcLabelClass")}>
+                        <label htmlFor="password-confirm" className={"text-xs font-light text-gray-700 font-battambang"}>
                             {msg("passwordConfirm")}
                         </label>
                     </div>
@@ -74,6 +75,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                                 type="password"
                                 id="password-confirm"
                                 name="password-confirm"
+                                className="text-foreground font-battambang"
                                 autoFocus
                                 autoComplete="new-password"
                                 aria-invalid={messagesPerField.existsError("password", "password-confirm")}
@@ -83,7 +85,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                         {messagesPerField.existsError("password-confirm") && (
                             <span
                                 id="input-error-password-confirm"
-                                className={kcClsx("kcInputErrorMessageClass")}
+                                className="input-error py-3 text-xs md:text-sm"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: messagesPerField.get("password-confirm")
@@ -93,7 +95,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                     </div>
                 </div>
 
-                <LogoutOtherSessions kcClsx={kcClsx} i18n={i18n} />
+                {/* <LogoutOtherSessions kcClsx={kcClsx} i18n={i18n} /> */}
                 <div className=" responsive-container ">
                     <input className={cn(buttonVariants(), "w-full my-5")} type="submit" value={msgStr("doSubmit")} />
                     {isAppInitiatedAction && (
