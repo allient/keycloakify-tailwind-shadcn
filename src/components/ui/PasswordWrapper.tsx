@@ -28,22 +28,21 @@ export function PasswordWrapper(props: {
     }, [isPasswordRevealed]);
 
     return (
-        <div className="flex space-x-2">
+        <div className="flex items-center space-x-2">
             {children}
-            {/* <Button
+            <Button
                 type="button"
                 aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
                 aria-controls={passwordInputId}
                 onClick={toggleIsPasswordRevealed}
+                className="p-2 rounded-md bg-gray-100 hover:bg-gray-200"
             >
-                <div>
-                    {isPasswordRevealed ? (
-                        <EyeSlashIcon className="h-5 w-5 " aria-hidden="true" />
-                    ) : (
-                        <EyeIcon className="h-5 w-5 " aria-hidden="true" />
-                    )}
-                </div>
-            </Button> */}
+                {isPasswordRevealed ? (
+                    <EyeSlashIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                ) : (
+                    <EyeIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                )}
+            </Button>
         </div>
     );
 }
