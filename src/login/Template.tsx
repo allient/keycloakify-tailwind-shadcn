@@ -178,7 +178,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
             <div id="kc-header-wrapper" className="text-center text-foreground hide md:visible">
                 {msgStr("loginTitleHtml", realm.displayNameHtml)}
             </div>
-            <Card className="py-0 px-3  md:-[40rem] shadow-2xl w-full min-h-screen  md:w-[30rem] sm:min-h-fit bg-[#FFFFF8]">
+            <Card className="py-0 px-6 shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl bg-[#FFFFF8]">
                 <CardContent className="space-y-8 pb-5 ">
                     {/* <div className="flex justify-end space-x-4 pt-2">
                         {languageSelector()}
