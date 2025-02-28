@@ -57,7 +57,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             }}
                             action={url.loginAction}
                             method="post"
-                            className="space-y-6"
+                            className="space-y-4"
                         >
                             {!usernameHidden && (
                                 <div>
@@ -87,7 +87,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             dangerouslySetInnerHTML={{
                                                 __html: messagesPerField.getFirstError("username", "password")
                                             }}
-                                        />              
+                                        />
                                     )}
                                 </div>
                             )}
@@ -117,6 +117,32 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         }}
                                     />
                                 )}
+                            </div>
+
+                            <div className="md:space-y-0 md:flex md:justify-between text-lg">
+                                <div>
+                                    {realm.rememberMe && !usernameHidden && (
+                                        <div className="flex items-center space-x-2">
+                                            <input
+                                                tabIndex={5}
+                                                className={clsx(checkboxVariants({}), "")}
+                                                name="rememberMe"
+                                                type="checkbox"
+                                                defaultChecked={!!login.rememberMe}
+                                            />
+                                            <span className="text-xs" >{msgStr("rememberMe")}</span>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="flex justify-end w-full"> {/* Alineación a la derecha */}
+                                    {realm.resetPasswordAllowed && (
+                                        <span className="text-[10px]">
+                                            <a tabIndex={6} href={url.loginResetCredentialsUrl}>
+                                                {msgStr("doForgotPassword")}
+                                            </a>
+                                        </span>
+                                    )}
+                                </div>
                             </div>
 
 
