@@ -175,105 +175,107 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
     };
     return (
         <div className="flex w-full min-h-screen">
-            <div className="w-3/12 min-w-96 md:w-1/4 sm:w-1/3 w-1/2 h-screen bg-gradient-to-b from-[#cce4ff] to-[#b3b8f3] relative mix-blend-multiply"></div>
+            <div className="w-3/12 min-w-96 md:w-1/4 sm:w-1/3 w-1/2 h-screen bg-gradient-to-b from-[#82C3EC1A] to-[#4B56D21A] relative mix-blend-multiply"></div>
+
             {/* <div className="bg-background  min-h-screen   flex flex-col items-center justify-center  prose dark:prose-invert max-w-none bg-[#eff3fc]"> */}
-                <div className="flex grow p-4 pt-32 pb-12 xl:py-24 lg:items-center justify-center">
-                    {/* <img src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1740676465/logo-png_vuxitm.png" alt="Logo" className="w-80 h-auto mb-4 mx-auto" /> */}
-                    <div id="kc-header-wrapper" className="text-center text-foreground hide md:visible ">
-                        {msgStr("loginTitleHtml", realm.displayNameHtml)}
-                    </div>
-                    <Card className="py-0 px-6 shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl bg-[#FFFFF8]">
-                        <CardContent className="space-y-4 pb-5 pt-8">
-                            {/* <div className="flex justify-end space-x-4 pt-2">
+            <div className="flex grow p-4 pt-32 pb-12 xl:py-24 lg:items-center justify-center">
+                {/* <img src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1740676465/logo-png_vuxitm.png" alt="Logo" className="w-80 h-auto mb-4 mx-auto" /> */}
+                <div id="kc-header-wrapper" className="text-center text-foreground hide md:visible ">
+                    {msgStr("loginTitleHtml", realm.displayNameHtml)}
+                </div>
+                {/* <Card className="py-0 px-6 shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl bg-[#FFFFF8]"> */}
+                <Card className="py-0 md:-[40rem] shadow-2xl w-full min-h-screen  md:w-[30rem] sm:min-h-fit bg-[#fffff8]">
+                    <CardContent className="space-y-4 pb-6 pt-8">
+                        {/* <div className="flex justify-end space-x-4 pt-2">
                         {languageSelector()}
                         <ModeToggle />
                     </div> */}
-                            <header className="text-left ">
-                                {(() => {
-                                    const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
-                                        <h2 id="kc-page-title" className="text-lg md:text-xl font-light text-gray-900 font-battambang" >{headerNode}</h2>
-                                    ) : (
-                                        <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
-                                            <label id="kc-attempted-username">{auth.attemptedUsername}</label>
-                                            <a id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
-                                                <div className="kc-login-tooltip">
-                                                    <i className={kcClsx("kcResetFlowIcon")}></i>
-                                                    <span className="kc-tooltip-text">{msg("restartLoginTooltip")}</span>
-                                                </div>
-                                            </a>
+                        <header className="text-left ">
+                            {(() => {
+                                const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
+                                    <h2 id="kc-page-title" className="text-lg md:text-xl font-light text-gray-900 font-battambang" >{headerNode}</h2>
+                                ) : (
+                                    <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
+                                        <label id="kc-attempted-username">{auth.attemptedUsername}</label>
+                                        <a id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
+                                            <div className="kc-login-tooltip">
+                                                <i className={kcClsx("kcResetFlowIcon")}></i>
+                                                <span className="kc-tooltip-text">{msg("restartLoginTooltip")}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                );
+
+                                if (displayRequiredFields) {
+                                    return (
+                                        <div className="text-sm">
+                                            <div className={clsx(kcClsx("kcLabelWrapperClass"), "subtitle")}>
+                                                <span className="subtitle">
+                                                    <span className="required">*</span>
+                                                    {msg("requiredFields")}
+                                                </span>
+                                            </div>
+                                            <div className="col-md-10">{node}</div>
                                         </div>
                                     );
+                                }
 
-                                    if (displayRequiredFields) {
-                                        return (
-                                            <div className="text-sm">
-                                                <div className={clsx(kcClsx("kcLabelWrapperClass"), "subtitle")}>
-                                                    <span className="subtitle">
-                                                        <span className="required">*</span>
-                                                        {msg("requiredFields")}
-                                                    </span>
-                                                </div>
-                                                <div className="col-md-10">{node}</div>
-                                            </div>
-                                        );
-                                    }
-
-                                    return node;
-                                })()}
-                            </header>
-                            <div id="kc-content" className="">
-                                <div id="kc-content-wrapper">
-                                    {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
-                                    {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
-                                        <div
-                                            className={clsx(
-                                                `alert-${message.type}`,
-                                                kcClsx("kcAlertClass"),
-                                                `pf-m-${message?.type === "error" ? "danger" : message.type}`
-                                            )}
-                                        >
-                                            <div className="pf-c-alert__icon">
-                                                {message.type === "success" && <span className={kcClsx("kcFeedbackSuccessIcon")}></span>}
-                                                {message.type === "warning" && <span className={kcClsx("kcFeedbackWarningIcon")}></span>}
-                                                {message.type === "error" && <span className={kcClsx("kcFeedbackErrorIcon")}></span>}
-                                                {message.type === "info" && <span className={kcClsx("kcFeedbackInfoIcon")}></span>}
-                                            </div>
-                                            <span
-                                                className="text-xs"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: message.summary
-                                                }}
-                                            />
+                                return node;
+                            })()}
+                        </header>
+                        <div id="kc-content" className="">
+                            <div id="kc-content-wrapper">
+                                {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
+                                {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
+                                    <div
+                                        className={clsx(
+                                            `alert-${message.type}`,
+                                            kcClsx("kcAlertClass"),
+                                            `pf-m-${message?.type === "error" ? "danger" : message.type}`
+                                        )}
+                                    >
+                                        <div className="pf-c-alert__icon">
+                                            {message.type === "success" && <span className={kcClsx("kcFeedbackSuccessIcon")}></span>}
+                                            {message.type === "warning" && <span className={kcClsx("kcFeedbackWarningIcon")}></span>}
+                                            {message.type === "error" && <span className={kcClsx("kcFeedbackErrorIcon")}></span>}
+                                            {message.type === "info" && <span className={kcClsx("kcFeedbackInfoIcon")}></span>}
                                         </div>
-                                    )}
-                                    {children}
-                                    {auth !== undefined && auth.showTryAnotherWayLink && (
-                                        <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
-                                            <div className={kcClsx("kcFormGroupClass")}>
-                                                <input type="hidden" name="tryAnotherWay" value="on" />
-                                                <a
-                                                    href="#"
-                                                    id="try-another-way"
-                                                    onClick={() => {
-                                                        document.forms["kc-select-try-another-way-form" as never].submit();
-                                                        return false;
-                                                    }}
-                                                >
-                                                    {msg("doTryAnotherWay")}
-                                                </a>
-                                            </div>
-                                        </form>
-                                    )}
-                                    {socialProvidersNode}
-                                </div>
+                                        <span
+                                            className="text-xs"
+                                            dangerouslySetInnerHTML={{
+                                                __html: message.summary
+                                            }}
+                                        />
+                                    </div>
+                                )}
+                                {children}
+                                {auth !== undefined && auth.showTryAnotherWayLink && (
+                                    <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
+                                        <div className={kcClsx("kcFormGroupClass")}>
+                                            <input type="hidden" name="tryAnotherWay" value="on" />
+                                            <a
+                                                href="#"
+                                                id="try-another-way"
+                                                onClick={() => {
+                                                    document.forms["kc-select-try-another-way-form" as never].submit();
+                                                    return false;
+                                                }}
+                                            >
+                                                {msg("doTryAnotherWay")}
+                                            </a>
+                                        </div>
+                                    </form>
+                                )}
+                                {socialProvidersNode}
                             </div>
-                            {displayInfo && (
-                                <div className=" w-full">
-                                    <div className=" text-foreground text-gray-700 text-xs">{infoNode}</div>
-                                </div>
-                            )}
-                        </CardContent>
-                    </Card>
+                        </div>
+                        {displayInfo && (
+                            <div className=" w-full">
+                                <div className=" text-foreground text-gray-700 text-xs">{infoNode}</div>
+                            </div>
+                        )}
+                    </CardContent>
+                </Card>
                 {/* </div> */}
             </div>
         </div>

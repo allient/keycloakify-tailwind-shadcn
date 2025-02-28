@@ -40,8 +40,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
         >
             <div id="kc-form">
                 <div id="kc-form-wrapper">
-                    <div id="kc-registration" className="pb-4">
-                        <span className="text-xs md:text-sm text-gray-600 text-center">
+                    <div id="kc-registration" className="pb-5">
+                        <span className="text-sm text-gray-500 text-center">
                             {"Need an account?"}{" "}
                             <a tabIndex={8} href={url.registrationUrl} className="text-blue-600 no-underline hover:underline font-normal">
                                 {"Sign Up"}
@@ -57,18 +57,19 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             }}
                             action={url.loginAction}
                             method="post"
-                            className="space-y-4"
+                            className="space-y-6"
                         >
                             {!usernameHidden && (
                                 <div>
-                                    <Label htmlFor="username" className="text-xs font-light text-gray-700 font-battambang">
+                                    {/* <Label htmlFor="username" className="text-xs font-light text-gray-700 font-battambang">
                                         {!realm.loginWithEmailAllowed
                                             ? "Email Address"
                                             : !realm.registrationEmailAsUsername
                                                 ? "Email Address"
                                                 : "Email Address"}
-                                    </Label>
+                                    </Label> */}
                                     <Input
+                                        labelText="Email Address"
                                         tabIndex={2}
                                         id="username"
                                         className="font-battambang font-light"
@@ -93,12 +94,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             )}
 
                             <div>
-                                <Label htmlFor="password" className="text-xs font-light text-gray-700 font-battambang">
+                                {/* <Label htmlFor="password" className="text-xs font-light text-gray-700 font-battambang">
                                     {msg("password")}
-                                </Label>
+                                </Label> */}
                                 <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password">
                                     <Input
                                         tabIndex={3}
+                                        labelText="Password"
                                         id="password"
                                         className="text-foreground font-battambang"
                                         name="password"
@@ -149,7 +151,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
                                 <Input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
 
-                                <Button tabIndex={7} disabled={isLoginButtonDisabled} type="submit" className="w-full ">
+                                <Button tabIndex={7} disabled={isLoginButtonDisabled} type="submit" className="w-full rounded-[0.5rem] text-base py-6">
                                     {"Log in →"}
                                 </Button>
                             </div>

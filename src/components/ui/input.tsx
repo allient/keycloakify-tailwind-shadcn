@@ -1,24 +1,36 @@
 import * as React from "react";
-
 import { cn } from "../../lib/utils";
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    labelText?: string;
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-    ({ className, type, ...props }, ref) => {
+    ({ className, type, labelText, ...props }, ref) => {
         return (
-            <input
-                type={type}
-                className={cn(
-                    "flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-                    className
+            <div className="relative w-full">
+                {/* Label flotante */}
+                {labelText && (
+                    <span className="text-gray-500 absolute left-2 top-0 z-10 inline-block -translate-y-1/2 whitespace-nowrap bg-white px-2 py-0.5 text-xs font-bold font-battambang">
+                        {labelText}
+                    </span>
                 )}
-                ref={ref}
-                {...props}
-            />
+
+                {/* Input */}
+                <input
+                    type={type}
+                    className={cn(
+                        "placeholder:text-gray-600 flex h-14 w-full rounded-lg border-2 bg-white px-3.5 text-sm outline-none transition-all duration-500 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 focus:border-blue-500 hover:border-blue-400 active:border-blue-600",
+                        className
+                    )}
+                    ref={ref}
+                    {...props}
+                />
+            </div>
         );
     }
 );
+
 Input.displayName = "Input";
 
 export { Input };
