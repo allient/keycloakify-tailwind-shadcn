@@ -53,7 +53,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                         {messagesPerField.existsError("password") && (
                             <span
                                 id="input-error-password"
-                                className="input-error py-3 text-[10px] md:text-xs"
+                                className="input-error py-3 text-xs md:text-xs font-battambang font-light"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: messagesPerField.get("password")
@@ -85,7 +85,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                         {messagesPerField.existsError("password-confirm") && (
                             <span
                                 id="input-error-password-confirm"
-                                className="input-error py-3 text-[10px] md:text-xs"
+                                className="input-error py-3 text-xs md:text-xs font-battambang font-light"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: messagesPerField.get("password-confirm")

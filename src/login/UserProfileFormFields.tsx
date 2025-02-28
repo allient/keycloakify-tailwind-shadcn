@@ -220,7 +220,7 @@ function FieldErrors(props: { attribute: Attribute; displayableErrors: FormField
         <span
             id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`}
             // className={kcClsx("kcInputErrorMessageClass")}
-            className="input-error py-3 text-[10px] md:text-xs"
+            className="input-error py-3 text-xs md:text-xs font-battambang font-light"
             aria-live="polite"
         >
             {displayableErrors

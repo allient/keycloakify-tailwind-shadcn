@@ -52,7 +52,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                         {messagesPerField.existsError("username") && (
                             <span
                                 id="input-error-username"
-                                className="input-error py-3 text-[10px] md:text-xs"
+                                className="input-error py-3 text-xs md:text-xs font-battambang font-light"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: messagesPerField.get("username")
