@@ -40,7 +40,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
         >
             <div id="kc-form">
                 <div id="kc-form-wrapper">
-                    <div id="kc-registration" className="">
+                    <div id="kc-registration" className="pb-4">
                         <span className="text-xs md:text-sm text-gray-600 text-center">
                             {"Need an account?"}{" "}
                             <a tabIndex={8} href={url.registrationUrl} className="text-blue-600 no-underline hover:underline font-normal">
@@ -119,7 +119,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 )}
                             </div>
 
-                            <div className="md:space-y-0 md:flex md:justify-between text-lg">
+                            <div className="md:space-y-0 md:justify-between text-lg">
                                 <div>
                                     {realm.rememberMe && !usernameHidden && (
                                         <div className="flex items-center space-x-2">
