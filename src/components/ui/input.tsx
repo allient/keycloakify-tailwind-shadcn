@@ -11,7 +11,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <div className="relative w-full">
                 {/* Label flotante */}
                 {labelText && (
-                    <span className="text-gray-500 absolute left-2 top-0 z-10 inline-block -translate-y-1/2 whitespace-nowrap bg-white px-2 py-0.5 text-xs font-bold font-battambang">
+                    <span className="text-gray-500 absolute left-2 top-0 z-10 inline-block -translate-y-1/2 whitespace-nowrap bg-white px-2 py-0.5 text-xs font-semibold font-battambang">
                         {labelText}
                     </span>
                 )}

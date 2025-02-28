@@ -30,7 +30,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
         >
             <form id="kc-reset-password-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
                 <div className={kcClsx("kcFormGroupClass")}>
-                    <div className={kcClsx("kcLabelWrapperClass")}>
+                    {/* <div className={kcClsx("kcLabelWrapperClass")}>
                         <label htmlFor="username" className={"text-xs font-light text-gray-700 font-battambang"}>
                             {!realm.loginWithEmailAllowed
                                 ? "Email Address"
@@ -38,11 +38,12 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                                   ? "Email Address"
                                   : "Email Address"}
                         </label>
-                    </div>
+                    </div> */}
                     <div className={kcClsx("kcInputWrapperClass")}>
                         <Input
                             type="text"
                             id="username"
+                            labelText="Email Address"
                             name="username"
                             className="font-battambang font-light"
                             autoFocus
@@ -75,7 +76,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                     <div id="kc-form-buttons" className="">
                         <input
                             // className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-                            className={cn(buttonVariants({ variant: "default" }), "w-full ")}
+                            className={cn(buttonVariants({ variant: "default" }), "w-full rounded-[0.5rem] text-base")}
                             type="submit"
                             value={msgStr("doSubmit")}
                         />

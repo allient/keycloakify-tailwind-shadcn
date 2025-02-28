@@ -45,7 +45,7 @@ export default function Register(props: RegisterProps) {
                     </a>
                 </span>
             </div>
-            <form id="kc-register-form" className="" action={url.registrationAction} method="post">
+            <form id="kc-register-form" className="py-6" action={url.registrationAction} method="post">
                 <UserProfileFormFields
                     kcContext={kcContext}
                     i18n={i18n}
@@ -70,7 +70,7 @@ export default function Register(props: RegisterProps) {
                     </div>
                 )}
                 <div className="text-center">
-                    <div className="mx-2">
+                    <div className="mx-2 my-5">
                         <div>
                             <span className="text-xs md:text-sm text-gray-600 text-center font-battambang">
                                 {"By signing up. I agree to "}{" "}

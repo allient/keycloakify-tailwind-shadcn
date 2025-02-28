@@ -30,16 +30,17 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
             displayMessage={!messagesPerField.existsError("password", "password-confirm")}
             headerNode={msg("updatePasswordTitle")}
         >
-            <form id="kc-passwd-update-form" action={url.loginAction} method="post" className="flex flex-col">
+            <form id="kc-passwd-update-form" action={url.loginAction} method="post" className="flex flex-col space-y-6">
                 <div className={kcClsx("kcFormGroupClass")}>
-                    <div className={kcClsx("kcLabelWrapperClass")}>
+                    {/* <div className={kcClsx("kcLabelWrapperClass")}>
                         <label htmlFor="password-new" className={"text-xs font-light text-gray-700 font-battambang"}>
                             {msg("passwordNew")}
                         </label>
-                    </div>
+                    </div> */}
                     <div className={kcClsx("kcInputWrapperClass")}>
                         <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password-new">
                             <Input
+                                labelText="New Password"
                                 type="password"
                                 className="text-foreground font-battambang"
                                 id="password-new"
@@ -64,16 +65,17 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                 </div>
 
                 <div className={kcClsx("kcFormGroupClass")}>
-                    <div className={kcClsx("kcLabelWrapperClass")}>
+                    {/* <div className={kcClsx("kcLabelWrapperClass")}>
                         <label htmlFor="password-confirm" className={"text-xs font-light text-gray-700 font-battambang"}>
                             {msg("passwordConfirm")}
                         </label>
-                    </div>
+                    </div> */}
                     <div className={kcClsx("kcInputWrapperClass")}>
                         <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password-confirm">
                             <Input
                                 type="password"
                                 id="password-confirm"
+                                labelText="Confirm Password"
                                 name="password-confirm"
                                 className="text-foreground font-battambang"
                                 autoFocus
@@ -101,7 +103,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                     {isAppInitiatedAction && (
                         <Button
                             // className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass")}
-                            className="w-full"
+                            className="w-full rounded-[0.5rem] text-base py-6"
                             type="submit"
                             name="cancel-aia"
                             value="true"

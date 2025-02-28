@@ -79,12 +79,12 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                                     display: attribute.name === "password-confirm" && !doMakeUserConfirmPassword ? "none" : undefined
                                 }}
                             >
-                                <div className="mx-6">
+                                {/* <div className="mx-6">
                                     <label htmlFor={attribute.name} className={"text-xs font-light text-gray-700 font-battambang"}>
                                         {advancedMsg(attribute.displayName ?? "")}
                                     </label>
                                     {attribute.required && <span className="text-danger"> *</span>}
-                                </div>
+                                </div> */}
                                 <div className={kcClsx("kcInputWrapperClass")}>
                                     {attribute.annotations.inputHelperTextBefore !== undefined && (
                                         <div
@@ -299,6 +299,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
                     return inputType ?? "text";
                 })()}
+                labelText={advancedMsgStr(attribute.displayName ?? "")}
                 id={attribute.name}
                 name={attribute.name}
                 value={(() => {
