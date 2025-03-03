@@ -286,7 +286,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
     const { attribute, fieldIndex, kcClsx, dispatchFormAction, valueOrValues, i18n, displayableErrors } = props;
 
     const { advancedMsgStr } = i18n;
-
+    console.log("attribute.displayName", attribute.displayName)
     return (
         <>
             <Input
@@ -593,83 +593,78 @@ function SelectTag(props: InputFieldByTypeProps) {
 
     const isMultiple = attribute.annotations.inputType === "multiselect";
 
+    console.log('props', props);
+
     return (
-        <select
-            id={attribute.name}
-            name={attribute.name}
-            className={`${kcClsx("kcInputClass")} text-sm font-battambang`}
-            aria-invalid={displayableErrors.length !== 0}
-            disabled={attribute.readOnly}
-            multiple={isMultiple}
-            size={attribute.annotations.inputTypeSize === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeSize}`)}
-            value={valueOrValues}
-            onChange={event =>
-                dispatchFormAction({
-                    action: "update",
-                    name: attribute.name,
-                    valueOrValues: (() => {
-                        if (isMultiple) {
-                            return Array.from(event.target.selectedOptions).map(option => option.value);
-                        }
+        <div className="relative w-full">
+            {/* Label flotante */}
+            <label
+                htmlFor={attribute.name}
+                className="text-gray-500 absolute left-2 top-0 z-10 inline-block -translate-y-1/2 peer-placeholder-shown:translate-y-1/2 bg-white px-2 py-0.5 text-xs font-semibold font-battambang transition-all"
+            >
+                {advancedMsgStr(attribute.displayName ?? "")}
+            </label>
 
-                        return event.target.value;
-                    })()
-                })
-            }
-            onBlur={() =>
-                dispatchFormAction({
-                    action: "focus lost",
-                    name: attribute.name,
-                    fieldIndex: undefined
-                })
-            }
-        >
-            {!isMultiple && <option value=""></option>}
-            {(() => {
-                const options = (() => {
-                    walk: {
-                        const { inputOptionsFromValidation } = attribute.annotations;
-
-                        if (inputOptionsFromValidation === undefined) {
-                            break walk;
-                        }
-
-                        assert(typeof inputOptionsFromValidation === "string");
-
-                        const validator = (attribute.validators as Record<string, { options?: string[] }>)[inputOptionsFromValidation];
-
-                        if (validator === undefined) {
-                            break walk;
-                        }
-
-                        if (validator.options === undefined) {
-                            break walk;
-                        }
-
-                        return validator.options;
-                    }
-
-                    return attribute.validators.options?.options ?? [];
-                })();
-
-                return options.map(option => (
-                    <option key={option} value={option}>
-                        {(() => {
-                            if (attribute.annotations.inputOptionLabels !== undefined) {
-                                const { inputOptionLabels } = attribute.annotations;
-
-                                return advancedMsgStr(inputOptionLabels[option] ?? option);
+            {/* Select con mayor altura y tamaño ajustable */}
+            <select
+                id={attribute.name}
+                name={attribute.name}
+                className={`${kcClsx("kcInputClass")} peer w-full text-sm font-battambang border-2 border-gray-300 rounded-lg bg-white px-3 py-3 h-20 outline-none focus:border-blue-500`}
+                aria-invalid={displayableErrors.length !== 0}
+                disabled={attribute.readOnly}
+                // multiple={isMultiple}  // Permite selección múltiple si es necesario
+                size={1}  // 
+                value={valueOrValues}
+                onChange={event =>
+                    dispatchFormAction({
+                        action: "update",
+                        name: attribute.name,
+                        valueOrValues: (() => {
+                            if (isMultiple) {
+                                return Array.from(event.target.selectedOptions).map(option => option.value);
                             }
+                            return event.target.value;
+                        })()
+                    })
+                }
+                onBlur={() =>
+                    dispatchFormAction({
+                        action: "focus lost",
+                        name: attribute.name,
+                        fieldIndex: undefined
+                    })
+                }
+            >
+                {!isMultiple && <option value="" className="text-gray-400">Choose one option</option>}
+                {(() => {
+                    const options = (() => {
+                        walk: {
+                            const { inputOptionsFromValidation } = attribute.annotations;
+                            if (inputOptionsFromValidation === undefined) break walk;
+                            assert(typeof inputOptionsFromValidation === "string");
+                            const validator = (attribute.validators as Record<string, { options?: string[] }>)[inputOptionsFromValidation];
+                            if (validator === undefined || validator.options === undefined) break walk;
+                            return validator.options;
+                        }
+                        return attribute.validators.options?.options ?? [];
+                    })();
 
-                            if (attribute.annotations.inputOptionLabelsI18nPrefix !== undefined) {
-                                return advancedMsgStr(`${attribute.annotations.inputOptionLabelsI18nPrefix}.${option}`);
-                            }
-
-                            return option;
-                        })()}
-                    </option>
-                ));
-            })()}
-        </select>
+                    return options.map(option => (
+                        <option key={option} value={option}>
+                            {(() => {
+                                if (attribute.annotations.inputOptionLabels !== undefined) {
+                                    const { inputOptionLabels } = attribute.annotations;
+                                    return advancedMsgStr(inputOptionLabels[option] ?? option);
+                                }
+                                if (attribute.annotations.inputOptionLabelsI18nPrefix !== undefined) {
+                                    return advancedMsgStr(`${attribute.annotations.inputOptionLabelsI18nPrefix}.${option}`);
+                                }
+                                return option;
+                            })()}
+                        </option>
+                    ));
+                })()}
+            </select>
+        </div>
     );
 }

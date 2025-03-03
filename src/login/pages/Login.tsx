@@ -132,13 +132,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                                 type="checkbox"
                                                 defaultChecked={!!login.rememberMe}
                                             />
-                                            <span className="text-xs" >{msgStr("rememberMe")}</span>
+                                            <span className="text-xs font-light font-battambang" >{msgStr("rememberMe")}</span>
                                         </div>
                                     )}
                                 </div>
                                 <div className="flex justify-end w-full"> {/* Alineación a la derecha */}
                                     {realm.resetPasswordAllowed && (
-                                        <span className="text-[10px]">
+                                        <span className="text-[10px] font-light font-battambang">
                                             <a tabIndex={6} href={url.loginResetCredentialsUrl}>
                                                 {msgStr("doForgotPassword")}
                                             </a>

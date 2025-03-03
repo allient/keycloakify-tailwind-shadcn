@@ -16,11 +16,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     </span>
                 )}
 
-                {/* Input */}
+                {/* Input con borde hover personalizado */}
                 <input
                     type={type}
                     className={cn(
-                        "placeholder:text-gray-600 flex h-14 w-full rounded-lg border-2 bg-white px-3.5 text-sm outline-none transition-all duration-500 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 focus:border-blue-500 hover:border-blue-400 active:border-blue-600",
+                        "placeholder:text-gray-600 flex h-14 w-full rounded-lg border-2 bg-white px-3.5 text-sm outline-none transition-all duration-500 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 focus:border-[#8188e0] hover:border-[#8188e0] active:border-[#6d72c3]",
                         className
                     )}
                     ref={ref}
