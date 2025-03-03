@@ -1,0 +1,57 @@
+/* Base print settings */
+@media print {
+    /* General Reset */
+    * {
+        color: black !important;           /* Set all text to black */
+        background: none !important; /* Remove all backgrounds */
+        box-shadow: none !important;       /* Remove shadows */
+        text-shadow: none !important;      /* Remove text shadows */
+        border-color: black !important;    /* Set all borders to black */
+        backdrop-filter: none!important;
+    }
+
+    /* Layout adjustments */
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow: visible;
+    }
+
+    /* Hide elements unnecessary for printing */
+    header, footer, nav, .sidebar, .controls, .button {
+        display: none !important;
+    }
+
+    /* Set font and typography */
+    body {
+        font-size: 12pt;                   /* Increase font for readability */
+        line-height: 1.5;                  /* Improve line spacing */
+        color-scheme: light;               /* Force light mode */
+    }
+
+    /* Links formatting */
+    a:link:after, a:visited:after {
+        content: " (" attr(href) ")";     /* Show URL next to link text */
+        color: black !important;
+    }
+
+    /* Images */
+    img, svg {
+        max-width: 100% !important;
+        height: auto !important;
+        filter: grayscale(100%) !important; /* Convert images to grayscale */
+    }
+
+    /* Accordion elements */
+    [aria-expanded="false"] > .accordion-content {
+        display: block !important; /* Ensure all accordion items are open */
+    }
+
+    /* Specifics for header, badges, etc. */
+    .badge, .button, .icon {
+        background: transparent !important;
+        color: black !important;
+        border: none !important;
+    }
+}

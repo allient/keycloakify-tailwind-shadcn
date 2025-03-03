@@ -1,0 +1,74 @@
+.rich-text {
+    h1 {
+        @apply text-3xl font-bold mt-6 mb-4 mx-0;
+    }
+
+    h2 {
+        @apply text-2xl font-medium mt-5 mb-3 mx-0;
+    }
+
+    h3 {
+        @apply text-xl font-medium mt-4 mb-3 mx-0;
+    }
+
+    h4 {
+        @apply text-lg font-medium mt-3 mb-2 mx-0;
+    }
+
+    p {
+        @apply mb-4 leading-relaxed mx-0 font-dm-sans;
+    }
+
+    ul {
+        @apply list-disc pl-5 mx-0 font-dm-sans;
+    }
+
+    ol {
+        @apply list-decimal list-inside pl-5 mx-0 font-dm-sans;
+    }
+    
+    ul, ol, p {
+        @apply text-base;
+        &:not(:first-child) {
+            @apply mt-4
+        }
+        &:not(:last-child) {
+            @apply mb-4
+        }
+        li {
+            p:nth-child(n+0) {
+                @apply mb-0
+            }
+            ul, ol {
+                &:not(:first-child) {
+                    @apply mt-2
+                }
+                &:not(:last-child) {
+                    @apply mb-2
+                }
+            }
+        }
+    }
+
+    li {
+        &:not(:first-child) {
+            @apply mt-2
+        }
+        &:not(:last-child) {
+            @apply mb-2
+        }
+    }
+
+    b,
+    strong {
+        @apply font-bold;
+    }
+
+    a {
+        @apply text-theme-blue/70 underline hover:text-theme-blue;
+    }
+
+    blockquote {
+        @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4 mx-0;
+    }
+}
