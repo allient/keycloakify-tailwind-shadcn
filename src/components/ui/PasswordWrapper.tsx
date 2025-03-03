@@ -4,6 +4,7 @@ import { assert } from "keycloakify/tools/assert";
 import { useEffect, useReducer } from "react";
 import { Button } from "./button";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
+
 export function PasswordWrapper(props: {
     kcClsx: KcClsx;
     i18n: I18n;
@@ -28,21 +29,24 @@ export function PasswordWrapper(props: {
     }, [isPasswordRevealed]);
 
     return (
-        <div className="flex items-center space-x-2">
+        <div className="relative w-full">
+            {/* Input con padding derecho para el ícono */}
             {children}
-            <Button
+
+            {/* Botón del ícono de ojo */}
+            <button
                 type="button"
                 aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
                 aria-controls={passwordInputId}
                 onClick={toggleIsPasswordRevealed}
-                className="p-2 rounded-md bg-gray-100 hover:bg-gray-200"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-gray-700"
             >
                 {isPasswordRevealed ? (
-                    <EyeSlashIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <EyeSlashIcon className="h-5 w-5" aria-hidden="true" />
                 ) : (
-                    <EyeIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <EyeIcon className="h-5 w-5" aria-hidden="true" />
                 )}
-            </Button>
+            </button>
         </div>
     );
 }
