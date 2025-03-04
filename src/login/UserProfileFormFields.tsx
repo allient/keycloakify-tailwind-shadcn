@@ -605,15 +605,13 @@ function SelectTag(props: InputFieldByTypeProps) {
                 {advancedMsgStr(attribute.displayName ?? "")}
             </label>
 
-            {/* Select con mayor altura y tamaño ajustable */}
+            {/* Select sin borde azul al hacer clic */}
             <select
                 id={attribute.name}
                 name={attribute.name}
-                className={`${kcClsx("kcInputClass")} peer w-full text-sm font-battambang border-2 border-gray-300 rounded-lg bg-white px-3 py-3 h-20 outline-none focus:border-blue-500`}
+                className="peer w-full text-sm font-battambang border-2 border-gray-300 rounded-lg bg-white px-3 py-4 h-14 appearance-none focus:outline-none hover:border-[#8188e0]"
                 aria-invalid={displayableErrors.length !== 0}
                 disabled={attribute.readOnly}
-                // multiple={isMultiple}  // Permite selección múltiple si es necesario
-                size={1}  // 
                 value={valueOrValues}
                 onChange={event =>
                     dispatchFormAction({
@@ -665,6 +663,13 @@ function SelectTag(props: InputFieldByTypeProps) {
                     ));
                 })()}
             </select>
+
+            {/* Flecha del select */}
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+            </div>
         </div>
     );
 }
