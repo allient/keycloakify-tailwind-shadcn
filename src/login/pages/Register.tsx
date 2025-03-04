@@ -74,12 +74,24 @@ export default function Register(props: RegisterProps) {
                         <div>
                             <span className="text-xs md:text-sm text-gray-600 text-center font-battambang">
                                 {"By signing up. I agree to "}{" "}
-                                <a tabIndex={8} href={url.loginUrl} className="text-blue-600 no-underline hover:underline font-normal">
-                                    {"Terms of Services"}
+                                <a
+                                    tabIndex={8}
+                                    href="https://incitefulmed.com/terms"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 no-underline hover:underline font-normal"
+                                >
+                                    Terms of Services
                                 </a>
                                 {" and "}
-                                <a tabIndex={8} href={url.loginUrl} className="text-blue-600 no-underline hover:underline font-normal">
-                                    {"Privacy Policy"}
+                                <a
+                                    tabIndex={8}
+                                    href="https://incitefulmed.com/privacy"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 no-underline hover:underline font-normal"
+                                >
+                                    Privacy Policy
                                 </a>
                                 {"."}
                             </span>
