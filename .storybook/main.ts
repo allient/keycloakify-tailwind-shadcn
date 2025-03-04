@@ -1,6 +1,10 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
-import path from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const config: StorybookConfig = {
     stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
     addons: [
@@ -14,7 +18,7 @@ const config: StorybookConfig = {
         config.resolve = {
             ...config.resolve,
             alias: {
-                "@": path.resolve(__dirname, "../src")
+                "@": join(__dirname, "..", "src"), // ✅ Fix path resolution
             }
         };
         return config;
