@@ -197,10 +197,12 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
                     {/* Tarjeta de contenido */}
                     <Card className="py-0 shadow-2xl w-full md:w-[30rem] sm:min-h-fit bg-[#fffff8]">
                         <CardContent className="space-y-4 pb-6 pt-8">
-                            <header className="text-left">
+                            <header className="text-left space-y-2">
                                 {(() => {
                                     const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
-                                        <h2 id="kc-page-title" className="text-lg md:text-xl font-light text-gray-900 font-battambang">{headerNode}</h2>
+                                        <h2 id="kc-page-title" className="text-lg md:text-xl font-light text-gray-900 font-battambang">
+                                            {headerNode}
+                                        </h2>
                                     ) : (
                                         <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
                                             <label id="kc-attempted-username">{auth.attemptedUsername}</label>
@@ -215,14 +217,12 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
 
                                     if (displayRequiredFields) {
                                         return (
-                                            <div className="text-sm">
-                                                <div className={clsx(kcClsx("kcLabelWrapperClass"), "subtitle")}>
-                                                    <span className="subtitle">
-                                                        <span className="required">*</span>
-                                                        {msg("requiredFields")}
-                                                    </span>
+                                            <div className="flex flex-col gap-1 text-sm text-gray-700">
+                                                <div className="flex items-center gap-1">
+                                                    <span className="text-red-500">*</span>
+                                                    <span>{msg("requiredFields")}</span>
                                                 </div>
-                                                <div className="col-md-10">{node}</div>
+                                                {node}
                                             </div>
                                         );
                                     }
