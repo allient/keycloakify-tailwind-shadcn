@@ -44,7 +44,34 @@ export default function LoginUpdateProfile(props: LoginUpdateProfileProps) {
                     onIsFormSubmittableValueChange={setIsFormSubmittable}
                     doMakeUserConfirmPassword={doMakeUserConfirmPassword}
                 />
-                <div className={"mt-20 "}>
+                <div className="mx-2 my-4 flex justify-center">
+                    <div className="text-center">
+                        <span className="text-xs md:text-sm text-gray-600 font-battambang">
+                            {"By signing up, I agree to "}{" "}
+                            <a
+                                tabIndex={8}
+                                href="https://incitefulmed.com/terms"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 no-underline hover:underline font-normal"
+                            >
+                                Terms of Services
+                            </a>
+                            {" and "}
+                            <a
+                                tabIndex={8}
+                                href="https://incitefulmed.com/privacy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 no-underline hover:underline font-normal"
+                            >
+                                Privacy Policy
+                            </a>
+                            {"."}
+                        </span>
+                    </div>
+                </div>
+                <div className={"mt-6"}>
                     <div id="kc-form-buttons" className={cn(isAppInitiatedAction ? "responsive-container" : "", "px-5 ")}>
                         <input
                             disabled={!isFormSubmittable}
