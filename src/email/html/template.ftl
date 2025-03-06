@@ -20,7 +20,7 @@
           <img
             src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1740676465/logo-png_vuxitm.png"
             alt="IncitefulMed"
-            style="max-width: 200px;"
+            style="max-width: 300px;"
           />
         </div>
 
