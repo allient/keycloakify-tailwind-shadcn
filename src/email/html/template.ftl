@@ -2,7 +2,7 @@
 <html>
   <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif; color: #333;">
     <!-- Contenedor principal centrado -->
-    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; margin-bottom: 120px;">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; margin-bottom: 160px;">
       
       <!-- Card principal -->
       <div style="
