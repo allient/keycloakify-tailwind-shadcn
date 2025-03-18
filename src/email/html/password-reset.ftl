@@ -1,7 +1,6 @@
 <#import "template.ftl" as layout>
 <@layout.emailLayout>
     <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: auto; padding: 10px;">
-        <h2 style="color: #9b25ea; text-align: center; margin-bottom: 20px">Password Reset Request</h2>
 
         <p>We received a request to reset your password for your <strong>Inciteful Med</strong> account.</p>
 
@@ -9,7 +8,7 @@
 
         <div style="text-align: center; margin: 20px 0;">
             <a href="${link}" 
-               style="background-color: #9b25ea; color: white; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-size: 16px; display: inline-block;">
+               style="background-color: #5613BF; color: white; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-size: 16px; display: inline-block;">
                Reset Password
             </a>
         </div>
