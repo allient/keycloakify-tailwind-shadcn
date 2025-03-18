@@ -13,6 +13,7 @@ import { checkboxVariants } from "../../components/ui/checkbox";
 import { Separator } from "../../components/ui/separator";
 import { PasswordWrapper } from "../../components/ui/PasswordWrapper";
 import SocialProviders from "../../components/ui/SocialProviders";
+
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -34,7 +35,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
-            headerNode={msg("loginAccountTitle")}
+            headerNode={"Sign in to Inciteful Med"}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} />}
         >

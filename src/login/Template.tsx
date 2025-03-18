@@ -178,7 +178,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
             {/* Topbar con el logo */}
             <div className="bg-white shadow-md py-3 px-6 flex items-center">
                 <img
-                    src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1740676465/logo-png_vuxitm.png"
+                    src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1742265623/IncitefulMed_full_logo_fzi6fm.png"
                     alt="Logo"
                     className="w-56 h-auto"
                 />

@@ -20,12 +20,13 @@ export default function Register(props: RegisterProps) {
         classes
     });
 
-    const { url, messagesPerField, recaptchaRequired, recaptchaSiteKey, termsAcceptanceRequired } = kcContext;
+    const {url, messagesPerField, recaptchaRequired, recaptchaSiteKey, termsAcceptanceRequired } = kcContext;
 
     const { msg, msgStr } = i18n;
 
     const [isFormSubmittable, setIsFormSubmittable] = useState(false);
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
+    
 
     return (
         <Template
@@ -36,6 +37,7 @@ export default function Register(props: RegisterProps) {
             headerNode={msg("registerTitle")}
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields={false}
+            
         >
             <div id="kc-registration" className="">
                 <span className="text-xs md:text-sm text-gray-600 text-center">
@@ -53,7 +55,7 @@ export default function Register(props: RegisterProps) {
                     onIsFormSubmittableValueChange={setIsFormSubmittable}
                     doMakeUserConfirmPassword={doMakeUserConfirmPassword}
                 />
-                {termsAcceptanceRequired && (
+                {true && (
                     <TermsAcceptance
                         i18n={i18n}
                         kcClsx={kcClsx}
@@ -69,8 +71,51 @@ export default function Register(props: RegisterProps) {
                         </div>
                     </div>
                 )}
-                <div className="text-center">
-                    <div className="mx-2 my-5">
+                <div className="text-center mb-7">
+                    <div id="kc-form-buttons" className="px-5 py-3">
+                        <Button
+                            disabled={!isFormSubmittable || (!areTermsAccepted)}
+                            // className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
+                            type="submit"
+                            className="w-full "
+                            variant={"default"}
+                        //value={msgStr("doRegister")}>
+                        >
+                            {/* {msgStr("doRegister")} */}
+                            {"Sign up →"}
+                        </Button>
+                    </div>
+                </div>
+            </form>
+        </Template>
+    );
+}
+
+function TermsAcceptance(props: {
+    i18n: I18n;
+    kcClsx: KcClsx;
+    messagesPerField: Pick<KcContext["messagesPerField"], "existsError" | "get">;
+    areTermsAccepted: boolean;
+    onAreTermsAcceptedValueChange: (areTermsAccepted: boolean) => void;
+}) {
+    const { i18n, kcClsx, messagesPerField, areTermsAccepted, onAreTermsAcceptedValueChange } = props;
+
+    const { msg } = i18n;
+
+    return (
+        <>
+            <div className="form-group pb-8">
+                <div className={kcClsx("kcLabelWrapperClass")}>
+                    <div className="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            id="termsAccepted"
+                            name="termsAccepted"
+                            className={checkboxVariants({})}
+                            checked={areTermsAccepted}
+                            onChange={e => onAreTermsAcceptedValueChange(e.target.checked)}
+                            aria-invalid={messagesPerField.existsError("termsAccepted")}
+                        />
                         <div>
                             <span className="text-xs md:text-sm text-gray-600 text-center font-battambang">
                                 {"By signing up. I agree to "}{" "}
@@ -96,59 +141,6 @@ export default function Register(props: RegisterProps) {
                                 {"."}
                             </span>
                         </div>
-                    </div>
-                    <div id="kc-form-buttons" className="px-5">
-                        <Button
-                            disabled={!isFormSubmittable || (termsAcceptanceRequired && !areTermsAccepted)}
-                            // className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-                            type="submit"
-                            className="w-full "
-                            variant={"default"}
-                        //value={msgStr("doRegister")}>
-                        >
-                            {msgStr("doRegister")}
-                        </Button>
-                    </div>
-                </div>
-            </form>
-        </Template>
-    );
-}
-
-function TermsAcceptance(props: {
-    i18n: I18n;
-    kcClsx: KcClsx;
-    messagesPerField: Pick<KcContext["messagesPerField"], "existsError" | "get">;
-    areTermsAccepted: boolean;
-    onAreTermsAcceptedValueChange: (areTermsAccepted: boolean) => void;
-}) {
-    const { i18n, kcClsx, messagesPerField, areTermsAccepted, onAreTermsAcceptedValueChange } = props;
-
-    const { msg } = i18n;
-
-    return (
-        <>
-            <div className="form-group">
-                <div className={kcClsx("kcInputWrapperClass")}>
-                    {msg("termsTitle")}
-                    <div id="kc-registration-terms-text">{msg("termsText")}</div>
-                </div>
-            </div>
-            <div className="form-group">
-                <div className={kcClsx("kcLabelWrapperClass")}>
-                    <div className="flex items-center space-x-2">
-                        <input
-                            type="checkbox"
-                            id="termsAccepted"
-                            name="termsAccepted"
-                            className={checkboxVariants({})}
-                            checked={areTermsAccepted}
-                            onChange={e => onAreTermsAcceptedValueChange(e.target.checked)}
-                            aria-invalid={messagesPerField.existsError("termsAccepted")}
-                        />
-                        <label htmlFor="termsAccepted" className={kcClsx("kcLabelClass")}>
-                            {msg("acceptTerms")}
-                        </label>
                     </div>
                 </div>
                 {messagesPerField.existsError("termsAccepted") && (
