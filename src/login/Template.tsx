@@ -236,7 +236,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
                                         <div className={clsx(
                                             `alert-${message.type}`,
                                             kcClsx("kcAlertClass"),
-                                            `pf-m-${message?.type === "error" ? "danger" : message.type}`
+                                            `pf-m-${message?.type === "error" ? "danger" : message.type}`, "mb-5"
                                         )}>
                                             <div className="pf-c-alert__icon">
                                                 {message.type === "success" && <span className={kcClsx("kcFeedbackSuccessIcon")}></span>}
