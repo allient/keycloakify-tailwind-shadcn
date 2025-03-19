@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { clsx } from "keycloakify/tools/clsx";
 import type { LazyOrNot } from "keycloakify/tools/LazyOrNot";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps";
@@ -7,10 +8,12 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { checkboxVariants } from "../../components/ui/checkbox";
+import SocialProviders from "../../components/ui/SocialProviders";
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
     UserProfileFormFields: LazyOrNot<(props: UserProfileFormFieldsProps) => JSX.Element>;
     doMakeUserConfirmPassword: boolean;
 };
+
 
 export default function Register(props: RegisterProps) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes, UserProfileFormFields, doMakeUserConfirmPassword } = props;
@@ -28,6 +31,29 @@ export default function Register(props: RegisterProps) {
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
 
+    const social = {
+        displayInfo: true,
+        providers: [
+            {
+                loginUrl: "google",
+                alias: "google-sign-up",
+                providerId: "google",
+                displayName: "Sign up with Google",
+                iconClasses: "fa fa-google"
+            }
+        ]
+    }
+
+    const realm = {
+        ...kcContext.realm, // Mantiene las propiedades originales
+        password: true,
+        registrationAllowed: true,
+        registrationEmailAsUsername: false,
+        rememberMe: true,
+        resetPasswordAllowed: true
+    };
+
+
     return (
         <Template
             kcContext={kcContext}
@@ -37,7 +63,7 @@ export default function Register(props: RegisterProps) {
             headerNode={"Create an account"}
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields={false}
-
+            socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} />}
         >
             <div id="kc-form">
                 <div id="kc-form-wrapper">
@@ -90,7 +116,7 @@ export default function Register(props: RegisterProps) {
                         </div>
                     </form>
                 </div>
-            </div>     
+            </div>
         </Template>
     );
 }

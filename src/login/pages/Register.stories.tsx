@@ -37,12 +37,13 @@ export const WithEmailAlreadyExists: Story = {
                         }
                     }
                 },
+                
                 messagesPerField: {
                     // NOTE: The other functions of messagesPerField are derived from get() and
                     // existsError() so they are the only ones that need to mock.
                     existsError: (fieldName: string, ...otherFieldNames: string[]) => [fieldName, ...otherFieldNames].includes("email"),
                     get: (fieldName: string) => (fieldName === "email" ? "Email already exists." : undefined)
-                }
+                },
             }}
         />
     )

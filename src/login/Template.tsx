@@ -51,7 +51,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
     const { msg, msgStr, getChangeLocaleUrl, labelBySupportedLanguageTag, currentLanguageTag } = i18n;
 
     const { realm, locale, auth, url, message, isAppInitiatedAction, authenticationSession, scripts } = kcContext;
-
+    
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
     }, []);
@@ -133,46 +133,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
     if (!areAllStyleSheetsLoaded) {
         return null;
     }
-    const languageSelector = () => {
-        return (
-            <div>
-                {realm.internationalizationEnabled && (assert(locale !== undefined), locale.supported.length > 1) && (
-                    <div className="mt-0.5 -mr-3  justify-end">
-                        <div id="kc-locale-wrapper" className="flex  justify-end">
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button
-                                        tabIndex={1}
-                                        variant="secondary"
-                                        size="sm"
-                                        aria-label={msgStr("languages")}
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        aria-controls="language-switch1"
-                                        className="px-3 py-0"
-                                    >
-                                        <div className="flex space-x-2">
-                                            <GlobeAltIcon className="h-5 w-5" />
-                                            <span>{labelBySupportedLanguageTag[currentLanguageTag]}</span>
-                                        </div>
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent id="language-switch1" role="menu">
-                                    {locale.supported.map(({ languageTag }, i) => (
-                                        <DropdownMenuItem key={languageTag} role="none">
-                                            <a role="menuitem" id={`language-${i + 1}`} href={getChangeLocaleUrl(languageTag)}>
-                                                {labelBySupportedLanguageTag[languageTag]}
-                                            </a>
-                                        </DropdownMenuItem>
-                                    ))}
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
-    };
+
     return (
         <div className="flex flex-col w-full min-h-screen">
             {/* Topbar con el logo */}
@@ -232,6 +193,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
 
                             <div id="kc-content">
                                 <div id="kc-content-wrapper">
+                                    {socialProvidersNode}
                                     {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
                                         <div className={clsx(
                                             `alert-${message.type}`,
@@ -261,7 +223,6 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
                                             </div>
                                         </form>
                                     )}
-                                    {socialProvidersNode}
                                 </div>
                             </div>
 
