@@ -178,7 +178,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
             {/* Topbar con el logo */}
             <div className="bg-white shadow-md py-3 px-6 flex items-center">
                 <img
-                    src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1740676465/logo-png_vuxitm.png"
+                    src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1742265623/IncitefulMed_full_logo_fzi6fm.png"
                     alt="Logo"
                     className="w-56 h-auto"
                 />
@@ -189,13 +189,13 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
                 <div className="w-3/12 min-w-96 md:w-1/4 sm:w-1/3 w-1/2 bg-gradient-to-b from-[#82C3EC1A] to-[#4B56D21A] relative mix-blend-multiply hidden sm:block"></div>
 
                 {/* Contenido principal sin forzar altura fija y con scroll solo si es necesario */}
-                <div className="flex grow p-4 pt-20 pb-12 xl:py-24 lg:items-center justify-center overflow-y-auto">
+                <div className="flex grow p-4 pt-12 pb-12 xl:py-24 lg:items-center justify-center overflow-y-auto">
                     <div id="kc-header-wrapper" className="text-center text-foreground hide md:visible">
                         {msgStr("loginTitleHtml", realm.displayNameHtml)}
                     </div>
 
                     {/* Tarjeta de contenido */}
-                    <Card className="py-0 shadow-2xl w-full md:w-[30rem] sm:min-h-fit bg-[#fffff8]">
+                    <Card className="py-0 shadow-2xl w-full md:w-[30rem] sm:min-h-fit bg-[#fffff8] rounded-xl">
                         <CardContent className="space-y-4 pb-6 pt-8">
                             <header className="text-left space-y-2">
                                 {(() => {
@@ -236,7 +236,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
                                         <div className={clsx(
                                             `alert-${message.type}`,
                                             kcClsx("kcAlertClass"),
-                                            `pf-m-${message?.type === "error" ? "danger" : message.type}`
+                                            `pf-m-${message?.type === "error" ? "danger" : message.type}`, "mb-5"
                                         )}>
                                             <div className="pf-c-alert__icon">
                                                 {message.type === "success" && <span className={kcClsx("kcFeedbackSuccessIcon")}></span>}

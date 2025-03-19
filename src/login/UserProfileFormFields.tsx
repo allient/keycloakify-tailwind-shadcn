@@ -56,7 +56,7 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
     const groupNameRef = { current: "" };
 
     return (
-        <div className="prose dark:prose-invert grid grid-cols-1 ">
+        <div className="prose dark:prose-invert grid grid-cols-1 gap-y-3 p-1">
             {formFieldStates.map(({ attribute, displayableErrors, valueOrValues }) => {
                 return (
                     <div className=" my-2">

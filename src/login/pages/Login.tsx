@@ -13,6 +13,7 @@ import { checkboxVariants } from "../../components/ui/checkbox";
 import { Separator } from "../../components/ui/separator";
 import { PasswordWrapper } from "../../components/ui/PasswordWrapper";
 import SocialProviders from "../../components/ui/SocialProviders";
+
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -34,13 +35,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
-            headerNode={msg("loginAccountTitle")}
+            headerNode={"Sign in to your account"}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} />}
         >
             <div id="kc-form">
                 <div id="kc-form-wrapper">
-                    <div id="kc-registration" className="pb-5">
+                    <div id="kc-registration" className="pb-8">
                         <span className="text-sm text-gray-500 text-center">
                             {"Need an account?"}{" "}
                             <a tabIndex={8} href={url.registrationUrl} className="text-blue-600 no-underline hover:underline font-normal">

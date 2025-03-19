@@ -18,7 +18,7 @@
         <!-- Logo -->
         <div style="padding: 20px; border-bottom: 2px solid #e5e5e5;">
           <img
-            src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1740676465/logo-png_vuxitm.png"
+            src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1742265623/IncitefulMed_full_logo_fzi6fm.png"
             alt="IncitefulMed"
             style="max-width: 300px;"
           />

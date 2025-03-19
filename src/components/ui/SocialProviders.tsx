@@ -27,6 +27,8 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
 }) => {
     const providers = social.providers || [];
 
+    console.log("SocialProviders.tsx: providers:", providers);
+
     return (
         realm.password &&
         providers.length > 0 && (
@@ -35,9 +37,11 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                     social.providers !== undefined &&
                     social.providers.length !== 0 && (
                         <div id="kc-social-providers" className="mt-5 space-y-5">
-                            <h2 className="text-center text-lg mt-7 font-battambang font-light">
-                                {"Or sign in with"}
-                            </h2>
+                            <div className="flex items-center my-4">
+                                <hr className="flex-grow border-t border-gray-300" />
+                                <span className="px-3 text-gray-500 text-sm">OR</span>
+                                <hr className="flex-grow border-t border-gray-300" />
+                            </div>
                             <div
                                 className={clsx(
                                     "text-lg grid gap-2 grid-cols-1", // Apply a grid and gap between items
@@ -49,27 +53,34 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                                 {social.providers.map((...[p, , providers]) => (
                                     <div
                                         key={p.alias}
-                                        className="group items-center bg-gray-100 w-full py-1 my-1.5 border rounded-xl px-3 
-               hover:bg-gray-300 transition-colors duration-200"
+                                        className="group w-full my-2.5 border bg-white hover:bg-gray-200 transition-colors duration-200"
+                                        style={{ borderRadius: "0.5rem" }}
                                     >
                                         <a
                                             id={`social-${p.alias}`}
-                                            className="flex flex-row items-center justify-center w-full py-2 no-underline hover:no-underline"
+                                            className="relative flex items-center justify-center w-full py-3 px-4 no-underline hover:no-underline "
                                             type="button"
                                             href={p.loginUrl}
                                         >
-                                            {p.iconClasses && (
-                                                <i
-                                                    className={clsx(p.iconClasses, "group-hover:text-black transition-colors duration-200")}
-                                                    aria-hidden="true"
-                                                ></i>
+                                            {/* Si es Google, usa la imagen en vez del icono */}
+                                            {p.alias === "google" ? (
+                                                <img
+                                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
+                                                    alt="Google"
+                                                    className="h-5 w-5 absolute left-4"
+                                                />
+                                            ) : (
+                                                p.iconClasses && (
+                                                    <i
+                                                        className={clsx(p.iconClasses, "absolute left-4 group-hover:text-black transition-colors duration-200")}
+                                                        aria-hidden="true"
+                                                    ></i>
+                                                )
                                             )}
-                                            <span
-                                                className="mx-3 text-gray-900 no-underline group-hover:text-black transition-colors duration-200"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: p.displayName.replace(/<a /g, '<a class="no-underline hover:no-underline" ')
-                                                }}
-                                            ></span>
+
+                                            <span className="text-sm font-medium text-gray-900 mx-auto">
+                                                {p.alias === "google" ? "Sign up with Google" : p.displayName}
+                                            </span>
                                         </a>
                                     </div>
                                 ))}
