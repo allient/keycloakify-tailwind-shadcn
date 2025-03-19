@@ -422,7 +422,6 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={true}
                             />
                         );
-
                     default:
                         return (
                             <Base

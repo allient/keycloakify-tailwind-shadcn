@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createKcPageStory } from "../KcPageStory";
-import { useEffect } from "react";
 
 const { KcPageStory } = createKcPageStory({ pageId: "login.ftl" });
 
@@ -14,12 +13,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-
     render: args => <KcPageStory {...args} />
 };
-
-
-
 
 export const WithInvalidCredential: Story = {
     render: args => (

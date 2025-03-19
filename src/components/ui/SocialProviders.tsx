@@ -8,6 +8,7 @@ export interface SocialProvidersProps {
             loginUrl: string;
             displayName: string;
             iconClasses?: string;
+            providerId? : string;
         }>;
     };
     kcClsx: (...args: any[]) => string;
@@ -27,7 +28,8 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
 }) => {
     const providers = social.providers || [];
 
-    console.log("SocialProviders.tsx: providers:", providers);
+
+    console.log("SocialProviders.tsx", { social, kcClsx, clsx, msg, realm });
 
     return (
         realm.password &&
@@ -37,11 +39,6 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                     social.providers !== undefined &&
                     social.providers.length !== 0 && (
                         <div id="kc-social-providers" className="mt-5 space-y-5">
-                            <div className="flex items-center my-4">
-                                <hr className="flex-grow border-t border-gray-300" />
-                                <span className="px-3 text-gray-500 text-sm">OR</span>
-                                <hr className="flex-grow border-t border-gray-300" />
-                            </div>
                             <div
                                 className={clsx(
                                     "text-lg grid gap-2 grid-cols-1", // Apply a grid and gap between items
@@ -63,7 +60,7 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                                             href={p.loginUrl}
                                         >
                                             {/* Si es Google, usa la imagen en vez del icono */}
-                                            {p.alias === "google" ? (
+                                            {p.alias.toLowerCase().includes("google") ? (
                                                 <img
                                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
                                                     alt="Google"
@@ -79,13 +76,19 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                                             )}
 
                                             <span className="text-sm font-medium text-gray-900 mx-auto">
-                                                {p.alias === "google" ? "Sign up with Google" : p.displayName}
+                                                {p.alias === "google" ? "Sign in with Google" : p.displayName}
                                             </span>
                                         </a>
                                     </div>
                                 ))}
                             </div>
+                            <div className="flex items-center my-4">
+                                <hr className="flex-grow border-t border-gray-300" />
+                                <span className="px-3 text-gray-500 text-sm">OR</span>
+                                <hr className="flex-grow border-t border-gray-300" />
+                            </div>
                         </div>
+
                     )}
             </>
         )
