@@ -23,7 +23,7 @@ export default function Register(props: RegisterProps) {
         classes
     });
 
-    const { social, url, messagesPerField, recaptchaRequired, recaptchaSiteKey, termsAcceptanceRequired } = kcContext;
+    const { pageId, social, url, messagesPerField, recaptchaRequired, recaptchaSiteKey, termsAcceptanceRequired } = kcContext;
 
     const { msg, msgStr } = i18n;
 
@@ -53,9 +53,6 @@ export default function Register(props: RegisterProps) {
         resetPasswordAllowed: true
     };
 
-    console.log("social", social)
-    console.log("realm", realm)
-
 
     return (
         <Template
@@ -66,7 +63,7 @@ export default function Register(props: RegisterProps) {
             headerNode={"Create an account"}
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields={false}
-            socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} />}
+            socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} pageId={pageId}/>}
         >
             <div id="kc-form">
                 <div id="kc-form-wrapper">

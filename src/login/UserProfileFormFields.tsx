@@ -286,7 +286,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
     const { attribute, fieldIndex, kcClsx, dispatchFormAction, valueOrValues, i18n, displayableErrors } = props;
 
     const { advancedMsgStr } = i18n;
-    console.log("attribute.displayName", attribute.displayName)
+
     return (
         <>
             <Input
@@ -592,8 +592,6 @@ function SelectTag(props: InputFieldByTypeProps) {
     const { advancedMsgStr } = i18n;
 
     const isMultiple = attribute.annotations.inputType === "multiselect";
-
-    console.log('props', props);
 
     return (
         <div className="relative w-full">
