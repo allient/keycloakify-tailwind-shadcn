@@ -28,6 +28,7 @@ export default function IdpReviewUserProfile(props: IdpReviewUserProfileProps) {
     const [isFomSubmittable, setIsFomSubmittable] = useState(false);
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
+    console.log("url", url);
     return (
         <Template
             kcContext={kcContext}
