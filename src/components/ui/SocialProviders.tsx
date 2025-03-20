@@ -8,9 +8,10 @@ export interface SocialProvidersProps {
             loginUrl: string;
             displayName: string;
             iconClasses?: string;
-            providerId? : string;
+            providerId?: string;
         }>;
     };
+    pageId?: string;
     kcClsx: (...args: any[]) => string;
     clsx: (...args: any[]) => string;
     msg: any;
@@ -21,15 +22,13 @@ export interface SocialProvidersProps {
 
 export const SocialProviders: React.FC<SocialProvidersProps> = ({
     social,
+    pageId,
     kcClsx,
     clsx,
     msg,
     realm
 }) => {
     const providers = social.providers || [];
-
-
-    console.log("SocialProviders.tsx", { social, kcClsx, clsx, msg, realm });
 
     return (
         realm.password &&
@@ -74,9 +73,12 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                                                     ></i>
                                                 )
                                             )}
-
                                             <span className="text-sm font-medium text-gray-900 mx-auto">
-                                                {p.alias === "google" ? "Sign in with Google" : p.displayName}
+                                                {p.alias === "google"
+                                                    ? pageId === "register.ftl"
+                                                        ? "Sign up with Google"
+                                                        : "Sign in with Google"
+                                                    : p.displayName}
                                             </span>
                                         </a>
                                     </div>

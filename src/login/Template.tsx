@@ -27,7 +27,7 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuSubContent
 } from "../components/ui/dropdown-menu";
-import DecorLayout from "./DecordLayout";
+// import DecorLayout from "./DecordLayout";
 
 export function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -51,7 +51,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
     const { msg, msgStr, getChangeLocaleUrl, labelBySupportedLanguageTag, currentLanguageTag } = i18n;
 
     const { realm, locale, auth, url, message, isAppInitiatedAction, authenticationSession, scripts } = kcContext;
-    
+
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
     }, []);
@@ -138,11 +138,13 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
         <div className="flex flex-col w-full min-h-screen">
             {/* Topbar con el logo */}
             <div className="bg-white shadow-md py-3 px-6 flex items-center">
-                <img
-                    src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1742265623/IncitefulMed_full_logo_fzi6fm.png"
-                    alt="Logo"
-                    className="w-56 h-auto"
-                />
+                <a href={url.loginUrl} className="cursor-pointer">
+                    <img
+                        src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1742265623/IncitefulMed_full_logo_fzi6fm.png"
+                        alt="Logo"
+                        className="w-56 h-auto"
+                    />
+                </a>
             </div>
 
             <div className="flex w-full flex-1">
