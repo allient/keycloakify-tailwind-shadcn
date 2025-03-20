@@ -23,7 +23,7 @@ export default function Register(props: RegisterProps) {
         classes
     });
 
-    const { url, messagesPerField, recaptchaRequired, recaptchaSiteKey, termsAcceptanceRequired } = kcContext;
+    const { social, url, messagesPerField, recaptchaRequired, recaptchaSiteKey, termsAcceptanceRequired } = kcContext;
 
     const { msg, msgStr } = i18n;
 
@@ -31,18 +31,18 @@ export default function Register(props: RegisterProps) {
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
 
-    const social = {
-        displayInfo: true,
-        providers: [
-            {
-                loginUrl: "google",
-                alias: "google-sign-up",
-                providerId: "google",
-                displayName: "Sign up with Google",
-                iconClasses: "fa fa-google"
-            }
-        ]
-    }
+    // const social = {
+    //     displayInfo: true,
+    //     providers: [
+    //         {
+    //             loginUrl: "google",
+    //             alias: "google-sign-up",
+    //             providerId: "google",
+    //             displayName: "Sign up with Google",
+    //             iconClasses: "fa fa-google"
+    //         }
+    //     ]
+    // }
 
     const realm = {
         ...kcContext.realm, // Mantiene las propiedades originales
@@ -52,6 +52,9 @@ export default function Register(props: RegisterProps) {
         rememberMe: true,
         resetPasswordAllowed: true
     };
+
+    console.log("social", social)
+    console.log("realm", realm)
 
 
     return (
