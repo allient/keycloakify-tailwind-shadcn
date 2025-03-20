@@ -5,10 +5,12 @@ import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
+// import type { KcContext } from "@/types/customKcContext";
 import type { I18n } from "../i18n";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { checkboxVariants } from "../../components/ui/checkbox";
 import SocialProviders from "../../components/ui/SocialProviders";
+import { toast } from "react-toastify";
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
     UserProfileFormFields: LazyOrNot<(props: UserProfileFormFieldsProps) => JSX.Element>;
     doMakeUserConfirmPassword: boolean;
@@ -23,6 +25,7 @@ export default function Register(props: RegisterProps) {
         classes
     });
 
+    //@ts-ignore
     const { pageId, social, url, messagesPerField, recaptchaRequired, recaptchaSiteKey, termsAcceptanceRequired } = kcContext;
 
     const { msg, msgStr } = i18n;
@@ -31,18 +34,6 @@ export default function Register(props: RegisterProps) {
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
 
-    // const social = {
-    //     displayInfo: true,
-    //     providers: [
-    //         {
-    //             loginUrl: "google",
-    //             alias: "google-sign-up",
-    //             providerId: "google",
-    //             displayName: "Sign up with Google",
-    //             iconClasses: "fa fa-google"
-    //         }
-    //     ]
-    // }
 
     const realm = {
         ...kcContext.realm, // Mantiene las propiedades originales
@@ -53,7 +44,6 @@ export default function Register(props: RegisterProps) {
         resetPasswordAllowed: true
     };
 
-
     return (
         <Template
             kcContext={kcContext}
@@ -61,20 +51,21 @@ export default function Register(props: RegisterProps) {
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             headerNode={"Create an account"}
+            documentTitle="Sign up to Inciteful Med"
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields={false}
-            socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} pageId={pageId}/>}
+            socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} pageId={pageId} />}
         >
             <div id="kc-form">
+                <div id="kc-registration" className="pb-4">
+                    <span className="text-xs md:text-sm text-gray-600 text-center">
+                        {"Already have an account?"}{" "}
+                        <a tabIndex={8} href={url.loginUrl} className="text-blue-600 no-underline hover:underline font-normal">
+                            {"Log In"}
+                        </a>
+                    </span>
+                </div>
                 <div id="kc-form-wrapper">
-                    <div id="kc-registration" className="pb-4">
-                        <span className="text-xs md:text-sm text-gray-600 text-center">
-                            {"Already have an account?"}{" "}
-                            <a tabIndex={8} href={url.loginUrl} className="text-blue-600 no-underline hover:underline font-normal">
-                                {"Log In"}
-                            </a>
-                        </span>
-                    </div>
                     <form id="kc-register-form" className="py-4 -mx-6" action={url.registrationAction} method="post">
                         <UserProfileFormFields
                             kcContext={kcContext}

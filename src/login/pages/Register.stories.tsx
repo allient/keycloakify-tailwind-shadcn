@@ -17,6 +17,7 @@ export const Default: Story = {
     render: args => <KcPageStory 
     {...args} 
     kcContext={{
+        //@ts-ignore
         social: {
             displayInfo: true,
             providers: [
@@ -60,6 +61,7 @@ export const WithEmailAlreadyExists: Story = {
                     existsError: (fieldName: string, ...otherFieldNames: string[]) => [fieldName, ...otherFieldNames].includes("email"),
                     get: (fieldName: string) => (fieldName === "email" ? "Email already exists." : undefined)
                 },
+                //@ts-ignore
                 social: {
                     displayInfo: true,
                 }
@@ -94,9 +96,18 @@ export const WithRestrictedToMITStudents: Story = {
                             "This is not an MIT (<strong>@mit.edu</strong>) nor a Berkeley (<strong>@berkeley.edu</strong>) email."
                     }
                 },
+                //@ts-ignore
                 social: {
                     displayInfo: true,
-
+                    providers: [
+                        {
+                            loginUrl: "google",
+                            alias: "google",
+                            providerId: "google",
+                            displayName: "Google",
+                            iconClasses: "fa fa-google"
+                        }
+                    ]
                 }
             }}
         />
@@ -133,6 +144,7 @@ export const WithFavoritePet: Story = {
                         "profile.attributes.favoritePet.options.fish": "Peaceful Fish"
                     }
                 },
+                //@ts-ignore
                 social: {
                     displayInfo: true,
                 }
@@ -153,6 +165,7 @@ export const WithEmailAsUsername: Story = {
                         username: undefined
                     }
                 },
+                //@ts-ignore
                 social: {
                     displayInfo: true,
                 }
@@ -168,6 +181,7 @@ export const WithRecaptcha: Story = {
                 scripts: ["https://www.google.com/recaptcha/api.js?hl=en"],
                 recaptchaRequired: true,
                 recaptchaSiteKey: "6LfQHvApAAAAAE73SYTd5vS0lB1Xr7zdiQ-6iBVa",
+                //@ts-ignore
                 social: {
                     displayInfo: true,
                 }
@@ -186,6 +200,7 @@ export const WithRecaptchaFrench: Story = {
                 scripts: ["https://www.google.com/recaptcha/api.js?hl=fr"],
                 recaptchaRequired: true,
                 recaptchaSiteKey: "6LfQHvApAAAAAE73SYTd5vS0lB1Xr7zdiQ-6iBVa",
+                 //@ts-ignore
                 social: {
                     displayInfo: true,
                 }
@@ -201,6 +216,7 @@ export const WithPasswordMinLength8: Story = {
                 passwordPolicies: {
                     length: 8
                 },
+                //@ts-ignore
                 social: {
                     displayInfo: true,
                 }
@@ -219,6 +235,7 @@ export const WithTermsAcceptance: Story = {
                         termsText: "<a href='https://example.com/terms'>Service Terms of Use</a>"
                     }
                 },
+                //@ts-ignore
                 social: {
                     displayInfo: true,
                 }

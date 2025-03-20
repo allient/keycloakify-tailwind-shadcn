@@ -27,7 +27,7 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuSubContent
 } from "../components/ui/dropdown-menu";
-import DecorLayout from "./DecordLayout";
+// import DecorLayout from "./DecordLayout";
 
 export function Template(props: TemplateProps<KcContext, I18n>) {
     const {

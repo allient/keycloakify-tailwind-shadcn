@@ -15,8 +15,10 @@ if (process.env.NODE_ENV === "development") {
 }
 */
 
+
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
+
         {!window.kcContext ? (
             <h1>No Keycloak Context</h1>
         ) : (
