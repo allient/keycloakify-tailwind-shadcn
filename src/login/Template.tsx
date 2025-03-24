@@ -138,7 +138,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
         <div className="flex flex-col w-full min-h-screen">
             {/* Topbar con el logo */}
             <div className="bg-white shadow-md py-3 px-6 flex items-center">
-                <a href={url.loginUrl} className="cursor-pointer">
+                <a href={"https://incitefulmed.com"} className="cursor-pointer">
                     <img
                         src="https://res.cloudinary.com/ecommercejasmine/image/upload/v1742265623/IncitefulMed_full_logo_fzi6fm.png"
                         alt="Logo"

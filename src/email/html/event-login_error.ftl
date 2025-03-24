@@ -2,7 +2,7 @@
 <@layout.emailLayout>
     <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: auto; padding: 20px;">
 
-        <p>We noticed a failed login attempt to your <strong>$Inciteful Med</strong> account.</p>
+        <p>We noticed a failed login attempt to your <strong>Inciteful Med</strong> account.</p>
 
         <p>If this was you, don’t worry—just try again.</p>
         <br>
