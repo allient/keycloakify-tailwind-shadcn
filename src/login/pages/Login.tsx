@@ -36,7 +36,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
-            headerNode={"Sign in to your account"}
+            headerNode={"Log in to your account"}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             socialProvidersNode={<SocialProviders social={social} kcClsx={kcClsx} clsx={clsx} msg={msg} realm={realm} />}
         >

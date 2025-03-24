@@ -53,7 +53,7 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
     const { realm, locale, auth, url, message, isAppInitiatedAction, authenticationSession, scripts } = kcContext;
 
     useEffect(() => {
-        document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
+        document.title = documentTitle ?? msgStr("loginTitle", "Inciteful Med");
     }, []);
 
     useSetClassName({
