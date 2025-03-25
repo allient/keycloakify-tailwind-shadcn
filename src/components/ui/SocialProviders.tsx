@@ -77,7 +77,7 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                                                 {p.alias === "google"
                                                     ? pageId === "register.ftl"
                                                         ? "Sign up with Google"
-                                                        : "Sign in with Google"
+                                                        : "Log in with Google"
                                                     : p.displayName}
                                             </span>
                                         </a>
