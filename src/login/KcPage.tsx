@@ -73,8 +73,6 @@ export default function KcPage(props: { kcContext: KcContext }) {
 
     return (
 
-
-
         <Suspense>
 
             {(() => {

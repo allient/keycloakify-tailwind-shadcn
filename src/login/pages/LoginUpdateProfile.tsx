@@ -151,7 +151,7 @@ function TermsAcceptance(props: {
                         />
                         <div>
                             <span className="text-xs md:text-sm text-gray-600 text-center font-battambang">
-                                {"By signing up. I agree to "}{" "}
+                                {"By signing up, I agree to "}{" "}
                                 <a
                                     tabIndex={8}
                                     href="https://incitefulmed.com/terms"
