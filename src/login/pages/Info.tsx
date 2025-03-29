@@ -31,16 +31,28 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                     className="instruction pb-5"
                     dangerouslySetInnerHTML={{
                         __html: (() => {
-                            const actionText = requiredActions?.length
-                                ? requiredActions.map(action => `<strong>${advancedMsgStr(`requiredAction.${action}`)}</strong>`).join(", ")
-                                : "";
+                            const hasRequiredActions = (requiredActions?.length ?? 0) > 0;
+
+                            if (hasRequiredActions) {
+                                const actionText = requiredActions
+                                    ?.map(action => `<strong>${advancedMsgStr(`requiredAction.${action}`)}</strong>`)
+                                    .join(", ");
+
+                                return `
+                                <div style="text-align: center;">
+                                  Just one more step!<br />
+                                  Please click the button below to complete the following action:<br />
+                                  ${actionText}
+                                </div>
+                              `;
+                            }
 
                             return `
-                            <div style="text-align: center;">
-                              Press the button below to proceed and complete the following action:<br />
-                              ${actionText}
-                            </div>
-                          `;
+                              <div style="text-align: center;">
+                                🎉 All your information has been successfully updated!<br />
+                                Press the button below to return to the app.
+                              </div>
+                            `;
                         })()
                     }}
                 />
@@ -51,10 +63,12 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
 
                     if (pageRedirectUri) {
                         return (
-                            <p>
-                                <a href={pageRedirectUri} className={`${buttonVariants({ variant: "default" })} pl-0`}>
-                                    {msg("backToApplication")}
-                                </a>
+                            <p className="justify-center flex">
+                                <div className={`${buttonVariants({ variant: "default" })}`}>
+                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">
+                                        {msg("backToApplication")}
+                                    </a>
+                                </div>
                             </p>
                         );
                     }
@@ -62,7 +76,9 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                         return (
                             <p className="justify-center flex">
                                 <div className={`${buttonVariants({ variant: "default" })}`}>
-                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">{msg("proceedWithAction")}</a>                                    
+                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">
+                                        {msg("proceedWithAction")}
+                                    </a>
                                 </div>
                             </p>
                         );
@@ -70,10 +86,12 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
 
                     if (client.baseUrl) {
                         return (
-                            <p>
-                                <a href={client.baseUrl} className={`${buttonVariants({ variant: "default" })} pl-0`}>
-                                    {msg("backToApplication")}
-                                </a>
+                            <p className="justify-center flex">
+                                <div className={`${buttonVariants({ variant: "default" })}`}>
+                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">
+                                        {msg("backToApplication")}
+                                    </a>
+                                </div>
                             </p>
                         );
                     }
