@@ -39,7 +39,6 @@ import WebauthnRegister from "./pages/WebauthnRegister";
 import LoginOauth2DeviceVerifyUserCode from "./pages/LoginOauth2DeviceVerifyUserCode";
 import LoginRecoveryAuthnCodeConfig from "./pages/LoginRecoveryAuthnCodeConfig";
 import LoginRecoveryAuthnCodeInput from "./pages/LoginRecoveryAuthnCodeInput";
-import { Toaster } from "react-hot-toast";
 const UserProfileFormFields = lazy(() => import("./UserProfileFormFields"));
 
 // Base component to render DefaultPage
@@ -72,9 +71,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
     const { i18n } = useI18n({ kcContext });
 
     return (
-
         <Suspense>
-
             {(() => {
                 switch (kcContext.pageId) {
                     case "login-recovery-authn-code-input.ftl":
@@ -324,7 +321,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "info.ftl":
                         return (
                             <Info
-                                kcContext={kcContext}
+                                kcContext={{ ...kcContext, messageHeader: "Update your account information" }}
                                 i18n={i18n}
                                 classes={classescustom}
                                 Template={CustomTemplate}

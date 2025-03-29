@@ -17,29 +17,30 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
             classes={classes}
             displayMessage={false}
             headerNode={
-                <span
-                    dangerouslySetInnerHTML={{
-                        __html: messageHeader ?? message.summary
-                    }}
-                />
+                <div className="text-center">
+                    <span
+                        dangerouslySetInnerHTML={{
+                            __html: messageHeader ?? message.summary
+                        }}
+                    />
+                </div>
             }
         >
             <div id="kc-info-message" className="">
                 <p
-                    className="instruction"
+                    className="instruction pb-5"
                     dangerouslySetInnerHTML={{
                         __html: (() => {
-                            let html = message.summary;
+                            const actionText = requiredActions?.length
+                                ? requiredActions.map(action => `<strong>${advancedMsgStr(`requiredAction.${action}`)}</strong>`).join(", ")
+                                : "";
 
-                            if (requiredActions) {
-                                html += "<b>";
-
-                                html += requiredActions.map(requiredAction => advancedMsgStr(`requiredAction.${requiredAction}`)).join(", ");
-
-                                html += "</b>";
-                            }
-
-                            return html;
+                            return `
+                            <div style="text-align: center;">
+                              Press the button below to proceed and complete the following action:<br />
+                              ${actionText}
+                            </div>
+                          `;
                         })()
                     }}
                 />
@@ -51,7 +52,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                     if (pageRedirectUri) {
                         return (
                             <p>
-                                <a href={pageRedirectUri} className={`${buttonVariants({ variant: "link" })} pl-0`}>
+                                <a href={pageRedirectUri} className={`${buttonVariants({ variant: "default" })} pl-0`}>
                                     {msg("backToApplication")}
                                 </a>
                             </p>
@@ -59,10 +60,10 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                     }
                     if (actionUri) {
                         return (
-                            <p>
-                                <a href={actionUri} className={`${buttonVariants({ variant: "link" })} pl-0`}>
-                                    {msg("proceedWithAction")}
-                                </a>
+                            <p className="justify-center flex">
+                                <div className={`${buttonVariants({ variant: "default" })}`}>
+                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">{msg("proceedWithAction")}</a>                                    
+                                </div>
                             </p>
                         );
                     }
@@ -70,7 +71,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                     if (client.baseUrl) {
                         return (
                             <p>
-                                <a href={client.baseUrl} className={`${buttonVariants({ variant: "link" })} pl-0`}>
+                                <a href={client.baseUrl} className={`${buttonVariants({ variant: "default" })} pl-0`}>
                                     {msg("backToApplication")}
                                 </a>
                             </p>
