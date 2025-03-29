@@ -40,7 +40,6 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
 
                                 return `
                                 <div style="text-align: center;">
-                                  Just one more step!<br />
                                   Please click the button below to complete the following action:<br />
                                   ${actionText}
                                 </div>
@@ -65,7 +64,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                         return (
                             <p className="justify-center flex">
                                 <div className={`${buttonVariants({ variant: "default" })}`}>
-                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">
+                                    <a href={pageRedirectUri} className="text-primary-foreground hover:text-primary-foreground visited:text-primary-foreground">
                                         {msg("backToApplication")}
                                     </a>
                                 </div>
@@ -76,7 +75,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                         return (
                             <p className="justify-center flex">
                                 <div className={`${buttonVariants({ variant: "default" })}`}>
-                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">
+                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground visited:text-primary-foreground">
                                         {msg("proceedWithAction")}
                                     </a>
                                 </div>
@@ -88,7 +87,7 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                         return (
                             <p className="justify-center flex">
                                 <div className={`${buttonVariants({ variant: "default" })}`}>
-                                    <a href={actionUri} className="text-primary-foreground hover:text-primary-foreground">
+                                    <a href={client.baseUrl} className="text-primary-foreground hover:text-primary-foreground visited:text-primary-foreground">
                                         {msg("backToApplication")}
                                     </a>
                                 </div>
